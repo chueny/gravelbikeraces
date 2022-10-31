@@ -1,0 +1,27 @@
+[
+    {
+      "race_name": "Little Sip Course",
+      "organizer": "Rooted Vermont",
+      "distance": 48,
+      "elevation": 4000, 
+      "gps_lat": 44.3952,
+      "gps_lon": 72.9816,
+      "gps": "Link to URL",
+      "state": "VT", 
+      "overview": "At 48 miles, you’ll still be delivered a healthy dose of challenge on a shorter variation of the longer course. Vermonters are known for their toughness and work ethic and the stunning terrain demands the same of its riders. Don’t forget to Barn-spot along the way, one of Ted’s favorite pastimes. You’ll aim for the southern most point of the ride, southeast of Starksboro and then turn towards the north again, joining up with the same roads as the 86 route. Continual short hills will take their toll along the way, but you’re rewarded with a final brisk gravel downhill and a paved final two miles to the finish.",
+      "img_URL": "https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg"
+    },
+    {
+        "race_name": "SIP OF SUNSHINE COURSE",
+        "organizer": "Rooted Vermont",
+        "distance": 86,
+        "elevation": 8000, 
+        "lat": 44.3952,
+        "lon": 72.9816,
+        "gps": "Link to URL",
+        "state": "VT", 
+        "overview": "The ride begins with a challenging punch up Wes White Hill out of Richmond. You’ll be hit with stunning scenery right away, but also a pitch that will cause field separation. You’ll encounter a mixture of smooth dirt roads and a few more rocky, challenging sections linked together with a bit of pavement as you head south towards Ripton. The Natural Turnpike is an absolute highlight of a dirt road and leads you toward the most southern point of the route before you begin heading north towards home. Looping back on entirely new roads, some of the best bits of gravel await. Riding through Lincoln, Starksboro, and Huntington, your legs will be thankful for a slight downhill towards Cochran road where you’ll time trial your way towards the finish for the final two miles.",
+        "img_URL": "https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg"
+    }
+]
+  
