@@ -31,16 +31,43 @@ def all_races():
 def show_race(race_id):
     """Show details on a race"""
     race = crud.get_race_by_id(race_id)
+    # reviews = crud.get_all_reviews()
+    sum = 0
+    len = 0
+    for review in race.reviews:
+        sum += review.score
+        len += 1
+       
+    avg = int(sum/len)
+    if avg == 1:
+        avg = "✩"
+    elif avg == 2:
+        avg = "✩✩"
+    elif avg == 3:
+        avg = "✩✩✩"
+    elif avg == 4:
+        avg = "✩✩✩✩"
+    else: 
+        avg = "✩✩✩✩✩"
 
-    return render_template("race_details.html", race=race)
+    print(f"avg:{avg}")
+    
+    return render_template("race_details.html", race=race, avg = avg)
 
 
 @app.route('/users')
-def show_users():
+def all_users():
     """Shows all users"""
     users = crud.get_all_users()
     return render_template("users.html", users = users) 
 
+@app.route('/users/<user_id>')
+def show_users(user_id):
+    """Shows user details"""
+
+    user =crud.get_all_users(user_id)
+
+    return render_template("users.html", user = user)
 
 @app.route('/login')
 def get_login_page():
@@ -121,7 +148,7 @@ def create_rating(race_id):
         user = crud.get_user_by_email(logged_in_email)
         race = crud.get_race_by_id(race_id)
 
-        review = crud.create_review(user, race, review_score, int(new_review))
+        review = crud.create_review(user, race, int(review_score), new_review)
         db.session.add(review)
         db.session.commit()
 
