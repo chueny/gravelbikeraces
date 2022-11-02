@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %} {{race.race_name}} {% endblock %}
+
+{% block content %}
+
+<h1>{{race.race_name}}</h1>
+{#     <h4>{{race.reviews.score}}</h4>             #}
+
+{% if session.get('user_email')%}
+
+<h2>Rate this race</h2>
+<form action="/races/{{race.race_id}}/ratings" methods="POST">
+    <p>
+        Rating: 
+        <select name="rating">
+            <option value="">Select rating</option>
+            {% for num in range(6) %}
+            <option value="{{num}}">{{num}}</option>
+            {% endfor %}
+        </select>
+    </p>
+
+
+<h2>Write a review</h2>
+    <div class="mb-9" style="width: 200px;">
+        <label for="exampleFormControlInput1" class="form-label">
+            <input type="textarea" class="form-control" name="review" id="email" placeholder="Write a review for this race">
+        </label>
+    </div>
+
+    <div class="mb-3">
+        <button>Submit</button>
+    </div>
+</form>
+{% endif %}
+
+<p>Location: {{race.location}} </p>
+<p>Distance: {{race.distance}} miles </p>
+<p>Elevation: {{race.elevation}} feet</p>
+
+<p>Description: {{race.overview}}</p>
+<img src="{{race.img_url}}" alt="picture of gravel biking">
+
+<p>Rate</p>
+<p>Review</p>
+
+
+
+{% endblock%}

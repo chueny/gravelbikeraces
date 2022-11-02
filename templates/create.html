@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title%} Create {% endblock%}
+
+{% block content %}
+
+<h1>Create an Account</h1>
+
+<form action="/create" method="POST">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Email
+            <input type="email" class="form-control" name= "email" id="email" placeholder="name@example.com">
+        </label>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Password
+            <input type="password" class="form-control" name="password" id="password" rows="3">
+        </label>
+   
+        </div>
+    <div class="mb-3">
+    <button>Submit</button>
+    </div>
+</form>
+
+{% endblock %}
