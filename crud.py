@@ -4,16 +4,13 @@ from model import db, User, Race, Review, connect_to_db
 
 def create_user(email, password):
     """Create and return a new user"""
-
-    user = User(email, password)
-
-    return User
+    user = User(email=email, password=password)
+    return user
 
 def get_all_users():
     """Return all users"""
 
     return User.query.all()
-
 
 def get_user_by_id(user_id):
     """Return user by id"""
@@ -23,10 +20,11 @@ def get_user_by_email(email):
     """Return user by email"""
     return User.query.filter(User.email == email).first()
 
-def create_race(name, distance, elevation, state):
+def create_race(name, distance, elevation, location, state, overview, img_url):
     """Create race and return a new race"""
-
-    race = Race(race_name = name, distance = distance, elevation= elevation, state = state)
+    
+    race = Race(race_name = name, distance = distance, elevation= elevation, location = location, state = state, overview=overview, img_url = img_url)
+    return race
 
 def get_all_races():
     """Return all races"""
@@ -44,7 +42,16 @@ def create_review(user, race, score, review):
 
     return review
 
+def update_score(review_id, new_score):
+    """Create and return a race score"""
+    score = Review.query.get(review_id)
+    review.score = new_score
+
 ##function to update and handle the score for REVIEW 
+def add_review(reivew_id, new_review):
+    """Create and return a race review """
+    review = Review.query.get(reivew_id)
+    review.score = new_review
 
 
 
