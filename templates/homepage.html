@@ -1,10 +1,44 @@
 {% extends 'base.html' %}
+{% block title %} Gravel Bike Races {% endblock %}
+
+{% block content %}
+<script src="/static/js/maps.js"></script>
+<script
+  async
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOJdwNS-VLpP_9_xAbqgRdIYy7qaMgGaQ&callback=initMap">
+</script>
+
+
+<h1>A quick glimpse of gravel bike races</h1>
+<section class="map">
+    <div id="map"></div>
+</section>
 
 
 
-{% block body %}
-    <h1>HEY FROM HOMEPAGE</h1>
-<h2>MAKING SURE THAT IT WORKS AFTER REVIEWS CHANGES</h2>
+{#
+    {% for race in races %}
+    <div class="card" style="width: 18rem;">
+        <img src="{{race.img_url}}}" class="card-img-top" alt="gravel bike picture">
+        <div class="card-body">
+          <h4><a href="/races/{{race.race_id}}">{{race.race_name}}</a></h4>
+          <p>{{race.average}}</p>
+          <p>{{race.location}}</p>
+          <p>{{race.distance}}</p>
+          <p>{{race.elevation}}</p>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+    </div>
+    {% endfor %}
+
+
+<a href="/races">
+    More races
+</a>
+#}
+
+
+
 
 {% endblock %}
 

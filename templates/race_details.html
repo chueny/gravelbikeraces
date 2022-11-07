@@ -4,17 +4,28 @@
 {% block content %}
 
 <h1>{{race.race_name}}</h1>
-{#     <h4>{{race.reviews.score}}</h4>             #}
+<h4>Average Rating: <span class="stars">{{avg}}</span></h4>
+
+{#  {% for review in race.reviews %}
+    <p>{{ review.score }}</p>    
+    {% endfor %}    #}
+
+<p>Location: {{race.location}} </p>
+<p>Distance: {{race.distance}} miles </p>
+<p>Elevation: {{race.elevation}} feet</p>
+
+<p>Description: {{race.overview}}</p>
+<img src="{{race.img_url}}" alt="picture of gravel biking">
 
 {% if session.get('user_email')%}
 
 <h2>Rate this race</h2>
-<form action="/races/{{race.race_id}}/ratings" methods="POST">
+<form action="/races/{{race.race_id}}/ratings" method="POST">
     <p>
         Rating: 
         <select name="rating">
             <option value="">Select rating</option>
-            {% for num in range(6) %}
+            {% for num in range(1, 6) %}
             <option value="{{num}}">{{num}}</option>
             {% endfor %}
         </select>
@@ -34,16 +45,11 @@
 </form>
 {% endif %}
 
-<p>Location: {{race.location}} </p>
-<p>Distance: {{race.distance}} miles </p>
-<p>Elevation: {{race.elevation}} feet</p>
+<h4>Reviews</h4>
+{% for review in race.reviews %}
+    <p>{{ review.review }}</p>    
 
-<p>Description: {{race.overview}}</p>
-<img src="{{race.img_url}}" alt="picture of gravel biking">
-
-<p>Rate</p>
-<p>Review</p>
-
+{% endfor %}  
 
 
 {% endblock%}

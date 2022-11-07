@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %} All Gravel Bike Races {% endblock %}
 
+
 {% block content %}
 
 <h1>GOOGLE MAP PERHAPS </h1>
@@ -9,6 +10,52 @@
 {# Do we want a search as well#}
 {# do we want an image view #}
 
+{# <section class="map">
+    <div id="map"></div>
+</section>
+#}
 
 
+
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <h3>Search for stuff</h3>
+        </div>
+      
+       
+        <div class="col-6 map">
+            <nav class="nav nav-pills nav-justified">
+               
+                <a id="get_grid" class="nav-link" href="#"> <button class="nav-link active">Grid</button></a>
+                <a id="get_link"class="nav-link" href="#"> <button class="nav-link active">Link</button></a>
+            </nav>
+            <div id="grid" hidden>this is grid</div>
+           
+           {#  
+            <a id="get_map" class="nav-link" href="#"> <button class="nav-link active">Map</button></a>
+            <div id="map" hidden>this is map stuff</div>   
+            #}
+           
+            <div id="link" hidden>
+                {% for race in races %}
+                <div class="container text-center">
+                    <div class="row">
+                         <div class="col-6 col-sm-3"><a href="/races/{{race.race_id}}">
+                            {{race.race_name}}</a></div>
+                            <div class="col-6 col-sm-2">Average starts? </div>
+                            <div class="col-6 col-sm-2">{{race.distance}}mi</div>
+                            <div class="col-6 col-sm-2">{{race.elevation}}ft</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/raceIndex.js"></script>
 {% endblock%}

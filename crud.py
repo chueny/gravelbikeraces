@@ -20,10 +20,10 @@ def get_user_by_email(email):
     """Return user by email"""
     return User.query.filter(User.email == email).first()
 
-def create_race(name, distance, elevation, location, state, overview, img_url):
+def create_race(name, average,  distance, elevation, location, state, gps_lat, gps_lon, overview, img_url):
     """Create race and return a new race"""
     
-    race = Race(race_name = name, distance = distance, elevation= elevation, location = location, state = state, overview=overview, img_url = img_url)
+    race = Race(race_name = name, average=average, distance = distance, elevation= elevation, location = location, state = state, gps_lat = gps_lat, gps_lon = gps_lon, overview=overview, img_url = img_url)
     return race
 
 def get_all_races():
@@ -39,20 +39,49 @@ def create_review(user, race, score, review):
     """Create and return a race review"""
 
     review = Review(user=user, race=race, score=score, review=review)
-
     return review
+
+def get_all_reviews():
+    """Get reviews by id"""
+
+    return Review.query.all()
+
 
 def update_score(review_id, new_score):
     """Create and return a race score"""
     score = Review.query.get(review_id)
     review.score = new_score
 
-##function to update and handle the score for REVIEW 
+
+def star_avg(race_id): # race_id or review_id
+    """Calculate the average of the score for a bike race"""
+    race = Race.query.get(race_id)
+    sum = 0
+    len = 0
+    for race in race.reviews:
+        sum += race.score
+        len += 1
+       
+    avg = int(sum/len)
+
+    if avg == 1:
+        avg = "✩"
+    elif avg == 2:
+        avg = "✩✩"
+    elif avg == 3:
+        avg = "✩✩✩"
+    elif avg == 4:
+        avg = "✩✩✩✩"
+    else: 
+        avg = "✩✩✩✩✩"
+
+    return avg
+
+
 def add_review(reivew_id, new_review):
     """Create and return a race review """
     review = Review.query.get(reivew_id)
     review.score = new_review
-
 
 
 if __name__ == '__main__':

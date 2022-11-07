@@ -1,7 +1,7 @@
 """Server for bike races app."""
 
 from flask import (Flask, render_template, request, flash, session,
-                   redirect)
+                   redirect, jsonify)
 from model import connect_to_db, db
 import crud
 
@@ -14,43 +14,53 @@ app.jinja_env.undefined = StrictUndefined
 @app.route('/')
 def homepage():
     """Show homepage""" 
+    #homepage has access to this data, but do i need it?
     races = crud.get_all_races()
+    
+
     return render_template('homepage.html', races = races)
+
+@app.route('/map')
+def show_map():
+    """Show map on page"""
+    all_races = crud.get_all_races()
+    
+    races =[]
+    
+
+    for race in all_races:
+        dict_races = {} #why does this only work in the loop?
+        dict_races['id'] = race.race_id
+        dict_races['name'] = race.race_name
+        dict_races['distance'] = race.distance
+        dict_races['elevation'] = race.elevation
+        dict_races['gps_lat'] = race.gps_lat
+        dict_races['gps_lon'] =race.gps_lon
+        dict_races['img_url'] =race.img_url       
+        
+        #print(dict_races)
+        races.append(dict_races)
+       
+    #print(dict_races)
+
+    return jsonify(races)
 
 @app.route('/races')
 def all_races():
     """View all races."""
 
-   #This route has a view of google maps
-   #When a pin is clicked here, we link the items here to view
-
-    return render_template("all_races.html")
+    #This route has a view of google maps
+    #When a pin is clicked here, we link the items here to view
+    races = crud.get_all_races()
+    # return races
+    return render_template("all_races.html", races=races)
 
 
 @app.route('/races/<race_id>')
 def show_race(race_id):
     """Show details on a race"""
     race = crud.get_race_by_id(race_id)
-    # reviews = crud.get_all_reviews()
-    sum = 0
-    len = 0
-    for review in race.reviews:
-        sum += review.score
-        len += 1
-       
-    avg = int(sum/len)
-    if avg == 1:
-        avg = "✩"
-    elif avg == 2:
-        avg = "✩✩"
-    elif avg == 3:
-        avg = "✩✩✩"
-    elif avg == 4:
-        avg = "✩✩✩✩"
-    else: 
-        avg = "✩✩✩✩✩"
-
-    print(f"avg:{avg}")
+    avg = crud.star_avg(race_id)
     
     return render_template("race_details.html", race=race, avg = avg)
 

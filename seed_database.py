@@ -21,15 +21,18 @@ with open('data/races.json') as f:
 races_in_db = []
 for race in race_data:
     race_name = race['race_name']
+    average = race['average']
     distance = race['distance']
     elevation = race['elevation']
     location = race['location']
     state = race['state']
+    gps_lat = race['gps_lat']
+    gps_lon = race['gps_lon']
     overview = race['overview']
     img_url = race['img_URL']
     
 
-    db_race = crud.create_race(race_name, distance, elevation, location, state, overview, img_url)
+    db_race = crud.create_race(race_name, average, distance, elevation, location, state, gps_lat, gps_lon, overview, img_url)
     races_in_db.append(db_race)
 
 model.db.session.add_all(races_in_db)
