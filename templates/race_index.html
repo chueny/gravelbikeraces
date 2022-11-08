@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block title %} All Gravel Bike Races {% endblock %}
+
+
+{% block content %}
+
+<h1>A different way to view </h1>
+
+<script src="/static/js/maps.js"></script>
+<script
+  async
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOJdwNS-VLpP_9_xAbqgRdIYy7qaMgGaQ&callback=initMap">
+</script>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3 search-by-specific">
+                <h4>Search for stuff</h4>
+                <div class="search-by-average-ratings">
+                    <p class="search-description">Average</p>
+                    <button class="search avg_one" name="1">✩</button>
+                    <button class="search avg_two"name="2">✩✩</button>
+                    <button class="search avg_three" name="3">✩✩✩</button>
+                    <button class="search avg_four"name="4">✩✩✩✩</button>
+                    <button class="search avg_five"name ="5">✩✩✩✩✩</button>
+                </div>
+                <div id="search-by-distances">
+                    <p class="search-description">Distance</p>
+                    <button class="search distance-btn twenty_five" name="25">1-25</button>
+                    <button class="search distance-btn fifty"name="50">26-50</button>
+                    <button class="search distance-btn seventy_five"name="75">51-75</button>
+                    <button class="search distance-btn hundred"name="100">75-100</button>
+                    <button class="search distance-btn hundred_plus"name="101">100+</button>
+                </div>
+                <div class="search-by-elevation">
+                    <p class="search-description">Elevation</p>
+                    <button class="search under_five_hun" name="500">under 500</button>
+                    <button class="search five_one" name="501">501-1,000</button>
+                    <button class="search one_one" name="1001">1,001-2,000</button>
+                    <button class="search two_one"name="2001">2,001-3,000</button>
+                    <button class="search three_one" name="3001">3,001-4,000</button>
+                    <button class="search four_plus" name="4001">4,001+ </button>
+                </div>
+        </div>
+    
+        <div class="col-6 map">
+            <nav class="nav nav-pills nav-justified">
+                {#<a id="get_map" class="nav-link" href="#"> <button class="nav-link active ">Map</button></a> #}
+                <a id="get_grid" class="nav-link" href="#"> <button class="nav-link active search" name="grid">Grid</button></a>
+                <a id="get_link"class="nav-link" href="#"> <button class="nav-link active search" name="link">Link</button></a>
+            </nav>
+
+            <div class="display-search-result">
+            {% for race in races %}
+                <div id="{{race.race_id}}" hidden>
+                    <a href="/races/{{race.race_id}}">
+                        {{race.race_name}}</a>
+                </div>
+            </div>
+            {% endfor %}
+
+            <div id="grid" hidden>    
+            {% for race in races %}
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{{race.img_url}}" alt="gravel bike race photo">
+                    <div class="card-body">
+                    <p class="card-text"></p>
+                    <a href="/races/{{race.race_id}}">
+                        {{race.race_name}}</a>
+                    <p>{{race.distance}}mi</p>
+                    <p>{{race.elevation}}ft</p>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+            <div id="link" hidden>
+                {% for race in races %}
+                <div class="container text-center">
+                    <div class="row">
+                         <div class="col-6 col-sm-3"><a href="/races/{{race.race_id}}">
+                            {{race.race_name}}</a></div>
+                            <div class="col-6 col-sm-2">Average starts? </div>
+                            <div class="col-6 col-sm-2">{{race.distance}}mi</div>
+                            <div class="col-6 col-sm-2">{{race.elevation}}ft</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+</div>
+<script src="/static/js/raceIndex.js"></script>
+{% endblock%}

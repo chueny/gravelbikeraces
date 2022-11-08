@@ -1,29 +1,39 @@
-// Race Index Page
-// onclick button displays that particular section and hides other displays
-let linkBtn = document.querySelector('#get_link');
-let gridBtn = document.querySelector('#get_grid');
-// let mapBtn = document.querySelector('#get_map');
+const searches = document.querySelectorAll('.search');
+searches.forEach(search => search.addEventListener('click', removeHidden));
 
-linkBtn.addEventListener("click",() => {
-      document.getElementById("grid").hidden = true;
-    //   document.getElementById("map").hidden = true;
-      document.getElementById("link").hidden = false;
-    },
-    false
-);
+function removeHidden(e){
+  console.log(`What is this:${e.target.name}`);
+  if (e.target.name == "link"){
+    document.getElementById("grid").hidden = true;
+    document.getElementById("link").hidden = false;
+  } else{
+    document.getElementById("grid").hidden = false;
+    document.getElementById("link").hidden = true;
+  }
+  
+}
 
-gridBtn.addEventListener("click",() => {
-      document.getElementById("grid").hidden = false;
-    //   document.getElementById("map").hidden = true;
-      document.getElementById("link").hidden = true;
-    },
-    false
-);
+fetch('/map')
+.then((response) => response.json())
+.then((races) => {
+   
+    console.log(`Index: ${races}`);
+   
+    // for (const race of races){
+    //     const raceInfoContent = `
+    //     <div>
+    //         <div class = "race-thumbail">
+    //             <img src="${race.img_url}" alt="bike race"/>
+    //         </div>
+    //         <h1 class="window-title"><a href="/races/${race.race_id}">
+    //         ${race.race_name}</a></h1>
+    //         <p clas="windown-miles">${race.location}</p>
+    //         <p clas="windown-miles">${race.distance}mi, ${race.elevation}ft</p>
+    //     </div>
+    //     `}
 
-// mapBtn.addEventListener("click",() => {
-//       document.getElementById("grid").hidden = true;
-//       document.getElementById("map").hidden = false;
-//       document.getElementById("link").hidden = true;
-//     },
-//     false
-// );
+      
+})
+.catch((err)=> {
+    console.log(err);
+});
