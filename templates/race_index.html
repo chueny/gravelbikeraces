@@ -6,11 +6,14 @@
 
 <h1>A different way to view </h1>
 
-<script src="/static/js/maps.js"></script>
+
+
+{#<script src="/static/js/maps.js"></script>
 <script
   async
   src="https://maps.googleapis.com/maps/api/js?key={{MY_API_KEY}}&callback=initMap">
 </script>
+#}
 
 <div class="container-fluid">
     <div class="row">
@@ -50,18 +53,27 @@
                 <a id="get_link"class="nav-link" href="#"> <button class="nav-link active search" name="link">Link</button></a>
             </nav>
 
-            <div class="display-search-result">
+            <div id="display-search-result" >
             {% for race in races %}
-                <div id="{{race.race_id}}" hidden>
+                
+                <div class="card race-card" data-distance="{{race.distance}}" 
+                data-elevation="{{race.elevation}}" style="width: 18rem;"  hidden> {# add hidden later #}
+                    <img class="card-img-top" src="{{race.img_url}}" alt="gravel bike race photo">
+                    <div class="card-body">
+                    <p class="card-text"></p>
                     <a href="/races/{{race.race_id}}">
                         {{race.race_name}}</a>
+                    <p>{{race.distance}}mi</p>
+                    <p>{{race.elevation}}ft</p>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
+       
 
             <div id="grid" hidden>    
             {% for race in races %}
-                <div class="card" style="width: 18rem;">
+                <div class="card race-card" style="width: 18rem;">
                     <img class="card-img-top" src="{{race.img_url}}" alt="gravel bike race photo">
                     <div class="card-body">
                     <p class="card-text"></p>

@@ -3,16 +3,87 @@ searches.forEach(search => search.addEventListener('click', removeHidden));
 
 function handleLinkClick() {
   document.getElementById("grid").hidden = true;
-  document.getElementById("link").hidden = false;
+  document.getElementById("link").hidden = false; 
+  resetSearchHidden();
 }
 
 function handleGridClick() {
-  document.getElementById("grid").hidden = false;
+  document.getElementById("grid").hidden = false; 
   document.getElementById("link").hidden = true;
+  resetSearchHidden();  
+}
+
+function resetSearchHidden(){
+  //initializes all cards attributes hidden to true;
+  raceCards = document.querySelectorAll('.race-card');
+  for (const card of raceCards){
+    card.hidden = true;
+  }
 }
 
 function filterByAvg(value) {
+  console.log(`Value:${value}`)
+  console.log(value)
 
+}
+
+function filterByDistance(value) {
+  // console.log(`ValueDistance:${value}`)
+  document.getElementById("grid").hidden = true; 
+  document.getElementById("link").hidden = true;
+  resetSearchHidden();
+
+  if(value == 25){
+    raceCards = document.querySelectorAll('.race-card');
+    for (const card of raceCards){
+      
+      distance = card.dataset.distance;
+      if (distance > 1 && distance <=25 ){
+        console.log(`card:`,card);
+      card.hidden = false;
+      }
+    }
+  } else if (value == 50){
+    raceCards = document.querySelectorAll('.race-card');
+    for (const card of raceCards){
+      distance = card.dataset.distance;
+      if (distance > 26 && distance <=50 ){
+      card.hidden = false;
+      }
+    }
+  } else if (value == 75){
+    console.log(`btn 75`, value)
+    raceCards = document.querySelectorAll('.race-card');
+    for (const card of raceCards){
+      distance = card.dataset.distance;
+      if (distance > 51 && distance <=75){
+      card.hidden = false;
+      }
+      }
+  } else if (value == 100){
+    console.log(`btn 100`, value)
+    raceCards = document.querySelectorAll('.race-card');
+    for (const card of raceCards){
+      distance = card.dataset.distance;
+      if (distance > 76 && distance <=100 ){
+      card.hidden = false;
+      }
+      }
+  } else{
+    raceCards = document.querySelectorAll('.race-card');
+    for (const card of raceCards){
+      distance = card.dataset.distance;
+      if (distance > 101){
+      card.hidden = false;
+      }
+    }
+  }
+}
+
+function filterByElevation(value) {
+  document.getElementById("grid").hidden = true; 
+  document.getElementById("link").hidden = true;
+  resetSearchHidden();
 }
 
 function handleFilterButtonClick(type, value) {
@@ -23,20 +94,19 @@ function handleFilterButtonClick(type, value) {
       break;
     case "distance-btn":
       //filterByDistance
+      filterByDistance(value);
       break;
     case "elevation":
-      //filterByElevation
+      filterByElevation(value);
       break;
-    default:
+    default: 
       document.getElementById("grid").hidden = true;
       document.getElementById("link").hidden = true;
   }
 }
 
 function removeHidden(e){
-  console.log(`What is this:${e.target.name}`);
-  
-  // there's 2 types of events you're tracking:
+  // we're tracking two types of events: 
   // 1. Link vs Grid display
   // 2. What kind of races aka filter (rating, distance, elvation)
 
@@ -55,7 +125,6 @@ function removeHidden(e){
 
   // if this is a filter then
   // handle filter click
-  
   if(['avg', 'distance-btn', 'elevation'].includes(buttonClickType)) {
     handleFilterButtonClick(buttonClickType, e.target.name)
   } else {
@@ -72,31 +141,3 @@ function removeHidden(e){
     }
   }
 }
-
-
-//1option 
-
-// fetch('/map')
-// .then((response) => response.json())
-// .then((races) => {
-//     console.log(races);
-//     //console.log(`Index: ${JSON.stringify(races)}`);
-  
-//     for (const race of races){
-//       //print(race)  ;
-//       // `
-//       //   <div>
-//       //       <div class = "race-thumbail">
-//       //           <img src="${race.img_url}" alt="bike race"/>
-//       //       </div>
-//       //       <h1 class="window-title"><a href="/races/${race.race_id}">
-//       //       ${race.race_name}</a></h1>
-//       //       <p clas="windown-miles">${race.location}</p>
-//       //       <p clas="windown-miles">${race.distance}mi, ${race.elevation}ft</p>
-//       //   </div>
-//       //   `
-//     }
-// })
-// .catch((err)=> {
-//     console.log(err);
-// });
