@@ -84,6 +84,23 @@ def add_review(reivew_id, new_review):
     review.score = new_review
 
 
+# def search_by_distance(input_miles):
+#     """Returns races by miles"""
+#     #how does this account for my parament 
+    
+#     if input_miles > 1 and input_miles <= 25:
+#         return  Race.query.filter((Race.distance > 1) & (Race.distance <=25)).all()
+#     elif input_miles > 25 and input_miles <= 50:
+#         return Race.query.filter((Race.distance > 25 ) & (Race.distance <=50)).all()
+#     elif input_miles > 50 and input_miles <= 75:
+#         return  Race.query.filter((Race.distance > 50) & (Race.distance <= 75)).all()
+#     elif input_miles > 75 and input_miles <= 100:
+#         return Race.query.filter((Race.distance > 75) & (Race.distance <= 100)).all()
+#     else: 
+#         return Race.query.filter(Race.distance > 100).all()
+    
+    
+
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)

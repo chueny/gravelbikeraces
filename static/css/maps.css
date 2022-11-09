@@ -13,3 +13,7 @@ html, body {
     height: 75%;
 }
   
+.window-content{  
+    width: 200px;
+    height: 200px;
+}

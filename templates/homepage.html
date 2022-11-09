@@ -2,10 +2,11 @@
 {% block title %} Gravel Bike Races {% endblock %}
 
 {% block content %}
+
 <script src="/static/js/maps.js"></script>
 <script
   async
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOJdwNS-VLpP_9_xAbqgRdIYy7qaMgGaQ&callback=initMap">
+  src="https://maps.googleapis.com/maps/api/js?key={{MY_API_KEY}}&callback=initMap">
 </script>
 
 
@@ -16,7 +17,7 @@
 
 
 
-{#
+{# 
     {% for race in races %}
     <div class="card" style="width: 18rem;">
         <img src="{{race.img_url}}}" class="card-img-top" alt="gravel bike picture">
@@ -30,12 +31,12 @@
         </div>
     </div>
     {% endfor %}
-
+    #}
 
 <a href="/races">
     More races
 </a>
-#}
+
 
 
 

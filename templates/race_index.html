@@ -9,7 +9,7 @@
 <script src="/static/js/maps.js"></script>
 <script
   async
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOJdwNS-VLpP_9_xAbqgRdIYy7qaMgGaQ&callback=initMap">
+  src="https://maps.googleapis.com/maps/api/js?key={{MY_API_KEY}}&callback=initMap">
 </script>
 
 <div class="container-fluid">
@@ -18,11 +18,11 @@
                 <h4>Search for stuff</h4>
                 <div class="search-by-average-ratings">
                     <p class="search-description">Average</p>
-                    <button class="search avg_one" name="1">✩</button>
-                    <button class="search avg_two"name="2">✩✩</button>
-                    <button class="search avg_three" name="3">✩✩✩</button>
-                    <button class="search avg_four"name="4">✩✩✩✩</button>
-                    <button class="search avg_five"name ="5">✩✩✩✩✩</button>
+                    <button class="search avg" name="1">✩</button>
+                    <button class="search avg"name="2">✩✩</button>
+                    <button class="search avg" name="3">✩✩✩</button>
+                    <button class="search avg"name="4">✩✩✩✩</button>
+                    <button class="search avg"name ="5">✩✩✩✩✩</button>
                 </div>
                 <div id="search-by-distances">
                     <p class="search-description">Distance</p>
@@ -34,12 +34,12 @@
                 </div>
                 <div class="search-by-elevation">
                     <p class="search-description">Elevation</p>
-                    <button class="search under_five_hun" name="500">under 500</button>
-                    <button class="search five_one" name="501">501-1,000</button>
-                    <button class="search one_one" name="1001">1,001-2,000</button>
-                    <button class="search two_one"name="2001">2,001-3,000</button>
-                    <button class="search three_one" name="3001">3,001-4,000</button>
-                    <button class="search four_plus" name="4001">4,001+ </button>
+                    <button class="search elevation under_five_hun" name="500">under 500</button>
+                    <button class="search elevation five_one" name="501">501-1,000</button>
+                    <button class="search elevation one_one" name="1001">1,001-2,000</button>
+                    <button class="search elevation two_one"name="2001">2,001-3,000</button>
+                    <button class="search elevation three_one" name="3001">3,001-4,000</button>
+                    <button class="search elevation four_plus" name="4001">4,001+ </button>
                 </div>
         </div>
     

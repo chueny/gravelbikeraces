@@ -1,24 +1,28 @@
 """Server for bike races app."""
 
 from flask import (Flask, render_template, request, flash, session,
-                   redirect, jsonify)
+                   redirect, jsonify, json)
 from model import connect_to_db, db
 import crud
+import os
 
 from jinja2 import StrictUndefined
 
 app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
+google_API = os.environ['MY_API_KEY']
+
 
 @app.route('/')
 def homepage():
     """Show homepage""" 
     #homepage has access to this data, but do i need it?
     races = crud.get_all_races()
-    
-
-    return render_template('homepage.html', races = races)
+   
+    print(races)
+    # data = json.dumps(races)
+    return render_template('homepage.html', races = races, MY_API_KEY = google_API)
 
 @app.route('/map')
 def show_map():
@@ -26,24 +30,26 @@ def show_map():
     all_races = crud.get_all_races()
     
     races =[]
-    
 
+    #dict_races outside, means the keys are unique and the values get replace each time
     for race in all_races:
-        dict_races = {} #why does this only work in the loop?
-        dict_races['id'] = race.race_id
-        dict_races['name'] = race.race_name
+        dict_races = {} #new dict each time
+        dict_races['race_id'] = race.race_id
+        dict_races['race_name'] = race.race_name
         dict_races['distance'] = race.distance
         dict_races['elevation'] = race.elevation
         dict_races['gps_lat'] = race.gps_lat
-        dict_races['gps_lon'] =race.gps_lon
-        dict_races['img_url'] =race.img_url       
-        
+        dict_races['gps_lon'] = race.gps_lon
+        dict_races['img_url'] = race.img_url
+        dict_races['location'] = race.location
+
         #print(dict_races)
         races.append(dict_races)
        
     #print(dict_races)
 
     return jsonify(races)
+
 
 @app.route('/races')
 def all_races():
@@ -53,7 +59,7 @@ def all_races():
     #When a pin is clicked here, we link the items here to view
     races = crud.get_all_races()
     # return races
-    return render_template("all_races.html", races=races)
+    return render_template("race_index.html", races=races)
 
 
 @app.route('/races/<race_id>')
@@ -102,14 +108,14 @@ def login_user():
 
     return redirect("/")
 
-@app.route('/create')
+@app.route('/signup')
 def show_login_page():
     """This route commented out b/c the one below does both"""
-    return render_template("create.html")
+    return render_template("signup.html")
 
-@app.route('/create', methods=["POST"])
-def create_user():
-    """Create a user account"""
+@app.route('/signup', methods=["POST"])
+def signup_user():
+    """Signup for auser account"""
     email = request.form.get("email")
     password = request.form.get('password')
 
