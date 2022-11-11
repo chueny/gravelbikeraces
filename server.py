@@ -5,6 +5,7 @@ from flask import (Flask, render_template, request, flash, session,
 from model import connect_to_db, db
 import crud
 import os
+import requests 
 
 from jinja2 import StrictUndefined
 
@@ -12,21 +13,19 @@ app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 google_API = os.environ['MY_API_KEY']
+geocode_key = os.environ['GEOCODE_KEY']
 
 
 @app.route('/')
 def homepage():
     """Show homepage""" 
-    #homepage has access to this data, but do i need it?
     races = crud.get_all_races()
-   
-    print(races)
-    # data = json.dumps(races)
+
     return render_template('homepage.html', races = races, MY_API_KEY = google_API)
 
 @app.route('/map')
 def show_map():
-    """Show map on page"""
+    """Shows data for the map"""
     all_races = crud.get_all_races()
     
     races =[]
@@ -43,11 +42,8 @@ def show_map():
         dict_races['img_url'] = race.img_url
         dict_races['location'] = race.location
 
-        #print(dict_races)
         races.append(dict_races)
-       
-    #print(dict_races)
-
+    
     return jsonify(races)
 
 
@@ -55,10 +51,8 @@ def show_map():
 def all_races():
     """View all races."""
 
-    #This route has a view of google maps
-    #When a pin is clicked here, we link the items here to view
     races = crud.get_all_races()
-    # return races
+
     return render_template("race_index.html", races=races)
 
 
@@ -76,6 +70,7 @@ def all_users():
     """Shows all users"""
     users = crud.get_all_users()
     return render_template("users.html", users = users) 
+
 
 @app.route('/users/<user_id>')
 def show_users(user_id):
@@ -101,7 +96,7 @@ def login_user():
     if not user or user.password != password:
         flash("The email or passward you entered was incorrect!")
         # print(f"YOU ARE NOT A USER")
-        return redirect("/create")
+        return redirect("/signup")
     else:
         session['user_email'] = user.email
         flash(f"welcome back, {user.email}")
@@ -139,7 +134,6 @@ def signup_user():
 def update_score():
     
     review_id = request.json["review_id"]
-    ##WHAT IS LINE 99 SAY? WEHRE ARE WE GETTTING THAT JSEON FILE ##
     updated_score = request.JSON["updated_score"]
     crud.update_score(review_id, updated_score)
 
@@ -148,6 +142,7 @@ def update_score():
     db.session.commit()
 
     return "Success"
+
 
 @app.route('/races/<race_id>/ratings', methods =["POST"])
 def create_rating(race_id):
@@ -171,6 +166,63 @@ def create_rating(race_id):
         flash(f"You rated {review_score} out of 5 and wrote a review for this race!")
        
     return redirect(f"/races/{race_id}")
+
+
+@app.route('/add-race')
+def add_race(): 
+    """"""
+    #NOT SURE THIS IS WORKING PROPERLY THERE ARE BUGS 
+    logged_in_email = session.get('user_email')
+    
+    if logged_in_email is None:
+        flash("You must be logged in to create a new race!")
+        return redirect("/login")
+    else: 
+        return render_template("add_race.html")
+
+
+@app.route('/fetch-geolocation', methods=["POST"])
+def fetch_gelocation(): #do we need a userId?
+    """Create a new race and adds it to the database"""
+
+    race_name = request.form.get('race')
+    average = request.form.get('average')
+    distance = request.form.get('distance')
+    elevation = request.form.get('elevation')
+    location = request.form.get('city')
+    state = request.form.get('state')
+    overview = request.form.get('overview')
+    img_url = request.form.get('img_url')
+    
+    # use city, state and input into google geocode API and make a resquest 
+    url = 'https://maps.googleapis.com/maps/api/geocode/json?address='
+    url = url + location +',+' + state + '&key=' + geocode_key
+    # print(url)
+    
+    res = requests.get(url)
+    geo_data = res.json()
+
+    try:
+        gps_lat = geo_data['results'][0]['geometry']['location']['lat']
+        gps_lon = geo_data['results'][0]['geometry']['location']['lng']
+    except:
+        flash(""" Location not valid. Try entering another city and state. """)
+    
+    race = crud.create_race(race_name = race_name, 
+                            average = average,
+                            distance = distance, 
+                            elevation= elevation, 
+                            location = location, 
+                            state = state, 
+                            gps_lat = gps_lat, 
+                            gps_lon = gps_lon, 
+                            overview=overview, 
+                            img_url = img_url)
+    db.session.add(race)
+    db.session.commit()
+
+    return redirect("/") #to google map and renders a new pin?
+
 
 if __name__ == "__main__":
     connect_to_db(app)

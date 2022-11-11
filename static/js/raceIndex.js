@@ -4,8 +4,7 @@ searches.forEach(search => search.addEventListener('click', removeHidden));
 function handleLinkClick() {
   document.getElementById("grid").hidden = true;
   document.getElementById("link").hidden = false; 
-  resetHiddenSearch();
- 
+  resetHiddenSearch(); 
 }
 
 function handleGridClick() {
@@ -13,7 +12,6 @@ function handleGridClick() {
   document.getElementById("grid").hidden = false; 
   document.getElementById("link").hidden = true;
   resetHiddenSearch();
-  
 }
 
 function resetHiddenSearch(){
@@ -25,131 +23,53 @@ function resetHiddenSearch(){
 }
 
 function filterByAvg(value) {
-  console.log(`Value:${value}`)
-  console.log(value)
-
-}
-
-function filterByDistance(value) {
-  // console.log(`ValueDistance:${value}`)
+  // console.log(value)
   document.getElementById("grid").hidden = true; 
   document.getElementById("link").hidden = true;
   resetHiddenSearch();
 
-  if(value == 25){
+  if(value == 1){
     raceCards = document.querySelectorAll('.race-card');
     for (const card of raceCards){
-      
-      distance = card.dataset.distance;
-      if (distance > 1 && distance <=25 ){
-        console.log(`card:`,card);
-      card.hidden = false;
+      average = card.dataset.average;
+      if (average == value){
+        card.hidden = false;
       }
     }
-  } else if (value == 50){
+  }else if (value == 2) {
     raceCards = document.querySelectorAll('.race-card');
     for (const card of raceCards){
-      distance = card.dataset.distance;
-      if (distance > 26 && distance <=50 ){
-      card.hidden = false;
+      average = card.dataset.average;
+      if (average == value){
+        card.hidden = false;
       }
     }
-  } else if (value == 75){
-    console.log(`btn 75`, value)
+  }else if (value == 3) {
     raceCards = document.querySelectorAll('.race-card');
     for (const card of raceCards){
-      distance = card.dataset.distance;
-      if (distance > 51 && distance <=75){
-      card.hidden = false;
+      average = card.dataset.average;
+      if (average == value){
+        card.hidden = false;
       }
-      }
-  } else if (value == 100){
-    console.log(`btn 100`, value)
+    }
+  }else if (value == 4) {
     raceCards = document.querySelectorAll('.race-card');
     for (const card of raceCards){
-      distance = card.dataset.distance;
-      if (distance > 76 && distance <=100 ){
-      card.hidden = false;
+      average = card.dataset.average;
+      if (average == value){
+        // console.log(`card:`,card);
+        card.hidden = false;
       }
-      }
-  } else{
+    }
+  } else if (value == 5){
     raceCards = document.querySelectorAll('.race-card');
     for (const card of raceCards){
-      distance = card.dataset.distance;
-      if (distance > 101){
-      card.hidden = false;
+      average = card.dataset.average;
+      if (average ==value){
+        card.hidden = false;
       }
     }
   }
-}
-
-function filterByElevation(value) {
-  console.log("elevation:", value);
-  document.getElementById("grid").hidden = true; 
-  document.getElementById("link").hidden = true;
-  resetHiddenSearch();
-
-  if(value == 500){
-    raceCards = document.querySelectorAll('.race-card');
-    for (const card of raceCards){
-      elevation = card.dataset.elevation;
-      //console.log(elevation);
-      if (elevation > 1 && elevation <=500 ){
-       // console.log(`card:`,card);
-      card.hidden = false;
-      }
-    }
-  } else if(value == 501){
-    raceCards = document.querySelectorAll('.race-card');
-    for (const card of raceCards){
-      elevation = card.dataset.elevation;
-      //console.log(elevation);
-      if (elevation > 500 && elevation <=1000 ){
-       // console.log(`card:`,card);
-      card.hidden = false;
-      }
-    }
-  } else if(value == 1001){
-    raceCards = document.querySelectorAll('.race-card');
-    for (const card of raceCards){
-      elevation = card.dataset.elevation;
-      //console.log(elevation);
-      if (elevation > 101 && elevation <=2000 ){
-       // console.log(`card:`,card);
-      card.hidden = false;
-      }
-    }
-  } else if(value == 2001){
-    raceCards = document.querySelectorAll('.race-card');
-    for (const card of raceCards){
-      elevation = card.dataset.elevation;
-      //console.log(elevation);
-      if (elevation > 2001 && elevation <=3000 ){
-       // console.log(`card:`,card);
-      card.hidden = false;
-      }
-    }
-  } else if(value == 3001){
-    raceCards = document.querySelectorAll('.race-card');
-    for (const card of raceCards){
-      elevation = card.dataset.elevation;
-     // console.log(elevation);
-      if (elevation > 3001 && elevation <=4000 ){
-       // console.log(`card:`,card);
-      card.hidden = false;
-      }
-    }
-  } else if (value == 4001){
-    raceCards = document.querySelectorAll('.race-card');
-    for (const card of raceCards){
-      elevation = card.dataset.elevation;
-      console.log(elevation);
-      if (elevation > 4001){
-       // console.log(`card:`,card);
-      card.hidden = false;
-      }
-    }
-  } 
 }
 
 function handleFilterButtonClick(type, value) {

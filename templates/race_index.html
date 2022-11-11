@@ -57,7 +57,7 @@
             {% for race in races %}
                 
                 <div class="card race-card" data-distance="{{race.distance}}" 
-                data-elevation="{{race.elevation}}" style="width: 18rem;"  hidden> {# add hidden later #}
+                data-average="{{race.average}}" data-elevation="{{race.elevation}}" style="width: 18rem;"  hidden> {# add hidden later #}
                     <img class="card-img-top" src="{{race.img_url}}" alt="gravel bike race photo">
                     <div class="card-body">
                     <p class="card-text"></p>
@@ -100,5 +100,7 @@
             </div>
         </div>
 </div>
+<script src="/static/js/filterByElevation.js"></script>
+<script src="/static/js/filterByDistance.js"></script>
 <script src="/static/js/raceIndex.js"></script>
 {% endblock%}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Add a new race {% endblock %}
+
+{% block content %}
+{% if session.get('user_email') %}
+
+<h1>Would you like to add a new race? </h1>
+<form action="/fetch-geolocation" method="POST" class="form-container">
+    <div class="form-group">
+      <label for="race_name">Name of the race:</label>
+      <input type="text" class="form-control" placeholder="name of gravel race" name="race">
+    </div>
+    <div class="form-group">
+        <label for="race_miles">How would you rate this race: </label>
+            <select name="rating">
+                <option value="">Select rating</option>
+                {% for num in range(1, 6) %}
+                <option value="{{num}}">{{num}}</option>
+                {% endfor %}
+            </select>
+    </div>
+    <div class="form-group">
+      <label for="race_miles">How many miles: </label>
+      <input type="number" class="form-control" placeholder="miles" name="distance">
+    </div>
+    <div class="form-group">
+        <label for="race_elevation">How much elevation (feet):</label>
+        <input type="number" class="form-control" placeholder="elevation" name="elevation">
+    </div>
+    <div class="form-group">
+        <label for="race_city">City</label>
+        <input type="text" class="form-control" placeholder="city" name="city">
+    </div>
+    <div class="form-group">
+        <label for="race_state">State</label>
+        <input type="text" class="form-control" placeholder="state" name="state">
+    </div>
+    <div class="form-group">
+        <label for="overview">Description</label>
+        <input type="text" class="form-control" placeholder="description" name="overview">
+    </div>
+    <div class="form-group">
+        <label for="img_url">Img</label>
+        <input type="url" class="form-control" placeholder="img_url" name="img_url">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endif %}
+
+{% endblock %}
