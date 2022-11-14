@@ -2,9 +2,9 @@
 
 from model import db, User, Race, Review, connect_to_db
 
-def create_user(email, password):
+def create_user(name, email, password):
     """Create and return a new user"""
-    user = User(email=email, password=password)
+    user = User(name= name, email=email, password=password)
     return user
 
 def get_all_users():
@@ -74,7 +74,8 @@ def star_avg(race_id): # race_id or review_id
         avg = "✩✩✩✩"
     else: 
         avg = "✩✩✩✩✩"
-
+    #is there a way that we can repackage this so 
+    #that we can utilize this funciton for somewhere else?
     return avg
 
 
@@ -82,22 +83,6 @@ def add_review(reivew_id, new_review):
     """Create and return a race review """
     review = Review.query.get(reivew_id)
     review.score = new_review
-
-
-# def search_by_distance(input_miles):
-#     """Returns races by miles"""
-#     #how does this account for my parament 
-    
-#     if input_miles > 1 and input_miles <= 25:
-#         return  Race.query.filter((Race.distance > 1) & (Race.distance <=25)).all()
-#     elif input_miles > 25 and input_miles <= 50:
-#         return Race.query.filter((Race.distance > 25 ) & (Race.distance <=50)).all()
-#     elif input_miles > 50 and input_miles <= 75:
-#         return  Race.query.filter((Race.distance > 50) & (Race.distance <= 75)).all()
-#     elif input_miles > 75 and input_miles <= 100:
-#         return Race.query.filter((Race.distance > 75) & (Race.distance <= 100)).all()
-#     else: 
-#         return Race.query.filter(Race.distance > 100).all()
     
     
 

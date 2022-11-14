@@ -19,9 +19,9 @@ geocode_key = os.environ['GEOCODE_KEY']
 @app.route('/')
 def homepage():
     """Show homepage""" 
-    races = crud.get_all_races()
+    # races = crud.get_all_races()
 
-    return render_template('homepage.html', races = races, MY_API_KEY = google_API)
+    return render_template('homepage.html', MY_API_KEY = google_API)
 
 @app.route('/map')
 def show_map():
@@ -34,6 +34,7 @@ def show_map():
     for race in all_races:
         dict_races = {} #new dict each time
         dict_races['race_id'] = race.race_id
+        dict_races['average'] = race.average
         dict_races['race_name'] = race.race_name
         dict_races['distance'] = race.distance
         dict_races['elevation'] = race.elevation
@@ -52,6 +53,22 @@ def all_races():
     """View all races."""
 
     races = crud.get_all_races()
+    # avg = []
+    # for race in races:
+    #     if race.average == 1:
+    #         return "✩"
+    #     if race.average == 2:
+    #         return "✩✩"
+    #     if race.average == 3:
+    #         return "✩✩✩"
+    #     if race.average == 4:
+    #         return "✩✩✩✩"
+    #     if race.average == 5:
+    #         return "✩✩✩✩✩"
+
+    # unstructure the variables?
+    # do something with the races.averge 
+    # (for race in races etc. etc.)
 
     return render_template("race_index.html", races=races)
 
@@ -88,7 +105,6 @@ def get_login_page():
 @app.route('/login', methods=["POST"])
 def login_user():
     """Login to a user account"""
-    # print(f"IN THE LOGIN ROUTE")
     email = request.form.get("email")
     password = request.form.get("password")
 
@@ -101,7 +117,20 @@ def login_user():
         session['user_email'] = user.email
         flash(f"welcome back, {user.email}")
 
-    return redirect("/")
+    return redirect("/profile") ## REDIRECT TO PROFILE 
+
+@app.route('/profile')
+def show_profile_page():
+    """Shows a user's profile page."""
+    logged_in_email = session.get('user_email')
+    user = crud.get_user_by_email(logged_in_email)
+    #class 
+
+    if logged_in_email is None:
+        flash("You must be log in to rate a race!")
+    else:
+        return render_template("profile.html", user=user)
+
 
 @app.route('/signup')
 def show_login_page():
@@ -111,6 +140,7 @@ def show_login_page():
 @app.route('/signup', methods=["POST"])
 def signup_user():
     """Signup for auser account"""
+    name = request.form.get('name')
     email = request.form.get("email")
     password = request.form.get('password')
 
@@ -120,7 +150,7 @@ def signup_user():
         flash("You already have an account. Please try loggin in.")
         # print(f"USER EXITS??")
     else:
-        user = crud.create_user(email, password)
+        user = crud.create_user(name, email, password)
         db.session.add(user)
         db.session.commit()
         flash("Account created. Please log in.")
@@ -197,11 +227,11 @@ def fetch_gelocation(): #do we need a userId?
     # use city, state and input into google geocode API and make a resquest 
     url = 'https://maps.googleapis.com/maps/api/geocode/json?address='
     url = url + location +',+' + state + '&key=' + geocode_key
-    # print(url)
+   
     
     res = requests.get(url)
     geo_data = res.json()
-
+    #print(geo_data)
     try:
         gps_lat = geo_data['results'][0]['geometry']['location']['lat']
         gps_lon = geo_data['results'][0]['geometry']['location']['lng']
@@ -221,7 +251,7 @@ def fetch_gelocation(): #do we need a userId?
     db.session.add(race)
     db.session.commit()
 
-    return redirect("/") #to google map and renders a new pin?
+    return redirect("/") 
 
 
 if __name__ == "__main__":

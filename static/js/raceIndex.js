@@ -62,6 +62,7 @@ function filterByAvg(value) {
       }
     }
   } else if (value == 5){
+    // handleAvgSearch();
     raceCards = document.querySelectorAll('.race-card');
     for (const card of raceCards){
       average = card.dataset.average;
@@ -71,6 +72,7 @@ function filterByAvg(value) {
     }
   }
 }
+
 
 function handleFilterButtonClick(type, value) {
   switch(type){

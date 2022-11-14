@@ -10,6 +10,7 @@ class User(db.Model):
     __tablename__ = "users"
     
     user_id = db.Column(db.Integer, primary_key = True, autoincrement=True)
+    name = db.Column(db.String)
     email = db.Column(db.String, unique = True)
     password = db.Column(db.String)
     

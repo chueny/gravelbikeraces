@@ -2,7 +2,7 @@
   {
     "race_name": "Little Sip Course",
     "organizer": "Rooted Vermont",
-    "average": 3,
+    "average": 5,
     "distance": 48,
     "elevation": 4000, 
     "location": "Richmond, VT",
@@ -16,7 +16,7 @@
   {
     "race_name": "SIP OF SUNSHINE COURSE",
     "organizer": "Rooted Vermont",
-    "average": 3,
+    "average": 4,
     "distance": 86,
     "elevation": 8000, 
     "location": "Richmond, VT",
@@ -44,7 +44,7 @@
   {
     "race_name": "SRAM 'Killer'",
     "organizer": "Barry-Roubaix",
-    "average": 5,
+    "average": 2,
     "distance": 62,
     "elevation": 3800,
     "location": "Hasting, MI",
@@ -58,7 +58,7 @@
   {
     "race_name": "Panaracer 'Psycho Killer'",
     "organizer": "Barry-Roubaix",
-    "average": 3,
+    "average": 1,
     "distance": 100,
     "elevation": 6800,
     "location": "Hasting, MI",
@@ -72,7 +72,7 @@
   {
     "race_name": "Hell of the North (Carolina)" ,
     "organizer":"Belgium Waffle",
-    "average": 3,
+    "average": 1,
     "distance":144,
     "elevation": 12001 ,
     "location": "Asheville, NC",
@@ -86,7 +86,7 @@
   {
     "race_name": "Hell of the South (Utah)" ,
     "organizer":"Belgium Waffle",
-    "average": 3,
+    "average": 2,
     "distance":136,
     "elevation": 5000,
     "location": "CedarCity, UT",
@@ -114,7 +114,7 @@
   {
     "race_name":"Crusher in the Tusher",
     "organizer":"Crusher in the Tusher",
-    "average": 3,
+    "average": 4,
     "distance": 70,
     "elevation": 9850,
     "location": "Cedar City, UT",
@@ -128,7 +128,7 @@
   {
     "race_name": "Baked Potato",
     "organizer": "Rebecca's Private Idaho",
-    "average":3 ,
+    "average":5,
     "distance": 103,
     "elevation": 6271,
     "location": "Sun Valley, ID",
@@ -142,7 +142,7 @@
   {
     "race_name": "French Fry",
     "organizer": "Rebecca's Private Idaho",
-    "average": 3,
+    "average": 5,
     "distance": 56,
     "elevation": 4386,
     "location": "Sun Valley, ID",
@@ -156,7 +156,7 @@
   {
     "race_name": "Tater Tot",
     "organizer": "Rebecca's Private Idaho",
-    "average": 3,
+    "average": 4,
     "distance": 18.76,
     "elevation": 1473,
     "location": "Sun Valley, ID",
@@ -184,7 +184,7 @@
   {
     "race_name": "Blue Course",
     "organizer": "SBT Gravel",
-    "average": 3,
+    "average": 2,
     "distance": 100,
     "elevation": 6000,
     "location": "Steamboat, CO",
@@ -198,7 +198,7 @@
   {
     "race_name": "Red Course",
     "organizer": "SBT Gravel",
-    "average": 3,
+    "average": 1,
     "distance": 60,
     "elevation": 3600,
     "location": "Steamboat, CO",
@@ -212,7 +212,7 @@
   {
     "race_name": "Green Course",
     "organizer": "SBT Gravel",
-    "average": 3,
+    "average": 1,
     "distance": 37,
     "elevation": 2000,
     "location": "Steamboat, CO",
@@ -226,7 +226,7 @@
   {
     "race_name": "UnPAved of the Susquehanna River Valley",
     "organizer": "UnPaved",
-    "average": 3,
+    "average": 2,
     "distance": 130,
     "elevation": 9442,
     "location": "Lewisburg, PA",
@@ -254,7 +254,7 @@
   {
     "race_name": "50 Mile",
     "organizer": "The MidSouth",
-    "average": 3,
+    "average": 4,
     "distance":56.6 ,
     "elevation": 2740,
     "location": "Stillwater, OK",
@@ -268,7 +268,7 @@
   {
     "race_name": "Grinduro",
     "organizer": "Giro",
-    "average": 3,
+    "average": 5,
     "distance": 60,
     "elevation": 8500,
     "location": "Mt. Shasta, CA",
@@ -282,7 +282,7 @@
   {
     "race_name":"The Big Sugar" ,
     "organizer": "The Big Sugar",
-    "average": 3,
+    "average": 5,
     "distance": 107,
     "elevation": 7000,
     "location": "Bentonville, AK",
@@ -296,7 +296,7 @@
   {
     "race_name":"Lil' Sugar" ,
     "organizer": "The Big Sugar",
-    "average": 3,
+    "average": 4,
     "distance": 52,
     "elevation": 3500,
     "location": "Bentonville, AK",
@@ -324,7 +324,7 @@
   {
     "race_name":"Heck of the North 20" ,
     "organizer": "Heck of the North",
-    "average": 3,
+    "average": 2,
     "distance": 20,
     "elevation": 504,
     "location": "Two Harbor, MN",
@@ -338,7 +338,7 @@
   {
     "race_name":"Heck of the North 55" ,
     "organizer": "Heck of the North",
-    "average": 3,
+    "average": 1,
     "distance": 55,
     "elevation": 1000,
     "location": "Two Harbor, MN",
@@ -352,7 +352,7 @@
   {
     "race_name":"Unbound - 50 Miles" ,
     "organizer": "Unbound",
-    "average": 3,
+    "average": 1,
     "distance": 50,
     "elevation": 1000,
     "location": "Emporia, KS",
@@ -366,7 +366,7 @@
   {
     "race_name":"GL30 La Pequena" ,
     "organizer": "Gravel Locos",
-    "average": 3,
+    "average": 2,
     "distance": 30,
     "elevation": 1600,
     "location": "Hico, TX",
@@ -394,7 +394,7 @@
   {
     "race_name":"GL100",
     "organizer": "Gravel Locos",
-    "average": 3,
+    "average": 4,
     "distance": 110.2,
     "elevation": 5024,
     "location": "Hico, TX",
@@ -403,12 +403,12 @@
     "gps_route":"NONE",
     "state": "TX",
     "overview": "La Gran Piedra has the best of of the routes! With 9 extra miles to make sure you get to a century on your bike computer, the GL100 won't be easy! 109 miles and its fair share of climbing with 5,000 ft of elevation gain, La Gran Piedra includes the water crossings, Loco Hill (yes, still 20% grade) and the 3 hills that are known as the 3 B's. This route has been changed to come back in on 281 and then into town similarly to the other routes.",
-    "img_URL": "https://hips.hearstapps.com/hmg-prod/images/gl-836-copy-1636131734.jpg?resize=980:*"
+    "img_URL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPr9ZMkk7nGlEyGeQ9rA5EuYexyOAlBPdc1Q&usqp=CAU"
   },
   {
     "race_name":"GL 150",
     "organizer": "Gravel Locos",
-    "average": 3,
+    "average": 5,
     "distance": 155.8,
     "elevation": 6614,
     "location": "Hico, TX",

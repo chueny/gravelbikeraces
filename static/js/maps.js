@@ -13,17 +13,28 @@ function initMap() {
  const raceInfo = new google.maps.InfoWindow();
 
 
-
-
-
-
 fetch('/map')
 .then((response) => response.json())
 .then((races) => {
-    //console.log("hello!");
-    //console.log(races);
-    // console.log(`data:`${data});
+    
     for (const race of races){
+
+        let average = race.average;
+        const displayStar = (average) => {
+        if (average == 1){
+            return "✩"
+        } else if (average == 2){
+            return "✩✩"
+        } else if (average == 3){
+            return "✩✩✩"
+        } else if (average ==4){
+            return "✩✩✩✩"
+        } else if(average ==5){
+            return "✩✩✩✩✩"
+        }
+        }
+        
+       
         const raceInfoContent = `
         <div class="window-content">
             <div class = "race-thumbail">
@@ -31,6 +42,7 @@ fetch('/map')
             </div>
             <h1 class="window-title"><a href="/races/${race.race_id}">
             ${race.race_name}</a></h1>
+            <p clas="windown-miles">${displayStar(average)}</p>
             <p clas="windown-miles">${race.location}</p>
             <p clas="windown-miles">${race.distance}mi, ${race.elevation}ft</p>
         </div>

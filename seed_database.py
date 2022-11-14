@@ -39,10 +39,11 @@ model.db.session.add_all(races_in_db)
 model.db.session.commit()
 
 for n in range(10):
+    name=f'name{n}'
     email = f'user{n}@test.com'
     password = 'test'
 
-    user = crud.create_user(email, password)
+    user = crud.create_user(name, email, password)
     model.db.session.add(user)
 
     for _ in range(10):
