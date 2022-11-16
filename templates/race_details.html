@@ -3,19 +3,28 @@
 
 {% block content %}
 
-<h1>{{race.race_name}}</h1>
-<h4>Average Rating: <span class="stars">{{avg}}</span></h4>
 
-{#  {% for review in race.reviews %}
-    <p>{{ review.score }}</p>    
-    {% endfor %}    #}
+<div class="card" style="width: 38rem; margin-right: 20px;">
+    <img class="card-img-top" src="{{race.img_url}}" alt="picture of gravel biking">
+    <div class="card-body">
+      <h5 class="card-title">{{race.race_name}}</h5>
+      <h6>Average Rating: <span class="stars">{{avg}}</span></h6>
+      
+      <p>Location: {{race.location}} </p>
+      <p>Distance: {{race.distance}} miles </p>
+      <p>Elevation: {{race.elevation}} feet</p>
+      <p>Description: {{race.overview}}</p>
+      <p class="card-text"></p>
+    </div>
+  </div>
 
-<p>Location: {{race.location}} </p>
-<p>Distance: {{race.distance}} miles </p>
-<p>Elevation: {{race.elevation}} feet</p>
+  <h4>What others say about this race</h4>
+  {% for review in race.reviews %}
+      <p class="display-review">{{ review.review }}</p>    
+  
+  {% endfor %}  
 
-<p>Description: {{race.overview}}</p>
-<img src="{{race.img_url}}" alt="picture of gravel biking">
+
 
 {% if session.get('user_email')%}
 
@@ -26,7 +35,7 @@
         <select name="rating">
             <option value="">Select rating</option>
             {% for num in range(1, 6) %}
-            <option value="{{num}}">{{num}}</option>
+            <option value="{{num}}" required>{{num}}</option>
             {% endfor %}
         </select>
     </p>
@@ -35,7 +44,7 @@
 <h2>Write a review</h2>
     <div class="mb-9" style="width: 200px;">
         <label for="exampleFormControlInput1" class="form-label">
-            <input type="textarea" class="form-control" name="review" id="email" placeholder="Write a review for this race">
+            <input type="textarea" class="form-control" name="review" id="email" placeholder="Write a review for this race" required>
         </label>
     </div>
 
@@ -44,12 +53,5 @@
     </div>
 </form>
 {% endif %}
-
-<h4>Reviews</h4>
-{% for review in race.reviews %}
-    <p class="display-review">{{ review.review }}</p>    
-
-{% endfor %}  
-
 
 {% endblock%}

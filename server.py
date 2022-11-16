@@ -109,13 +109,17 @@ def login_user():
     password = request.form.get("password")
 
     user = crud.get_user_by_email(email)
-    if not user or user.password != password:
-        flash("The email or passward you entered was incorrect!")
+    if not user:
+        flash("Please sign up for an account!")
         # print(f"YOU ARE NOT A USER")
         return redirect("/signup")
+    if not user.password != password:
+        flash("The passward you entered was incorrect!")
+        # print(f"YOU ARE NOT A USER")
+        return redirect("/login")
     else:
         session['user_email'] = user.email
-        flash(f"welcome back, {user.email}")
+        flash(f"Welcome back, {user.name}")
 
     return redirect("/profile") ## REDIRECT TO PROFILE 
 

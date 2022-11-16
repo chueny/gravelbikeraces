@@ -2,23 +2,25 @@
 {% block title %} Login {% endblock %}
 
 {% block content %}
-<div clas="justify-content-center" >
-    <h1>Login</h1>
+<div class="login-background"> 
+<div class="login-container">
 
-    <form action="/login" method="POST">
-        <div class="mb-3">
+    <form action="/login" method="POST" class="needs-validation" >
+        <h1 class="alice">Login</h1>
+        <div class="mb-3 alice">
             <label for="exampleFormControlInput1" class="form-label">Email
-                <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
+                <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
             </label>
         </div>
-        <div class="mb-3">
+        <div class="mb-3 alice">
             <label for="exampleFormControlTextarea1" class="form-label">Pasword
-                <input type="password" class="form-control" name="password" id="password" rows="3">
+                <input type="password" class="form-control" name="password" id="password" rows="3" required>
             </label>
         </div>
         <div class="mb-3">
             <button>Submit</button>
         </div>
     </form>
+</div>
 </div>
 {% endblock %}

@@ -1,42 +1,142 @@
+/* =ALL============================================================== */
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 html, body {
-    margin: 0;
     width: 100%;
     height: 100%;
-  }
-#navbar{
-background-image: url("gravelride.jpeg");
-min-height: 200px;
-background-position: center;
-background-size: cover;
+    /* text-align: center; */
 }
 
-.homepage header{
-    text-align: center;
+/* =NAVIGATION========================================================= */
+.navigation-container{
+
+  
+    
 }
 
-#footer{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
+.column-races{
+    display: flex;
+    justify-content: flex-start;
 }
-#content{
-    height: 90vh; 
+
+.nav-link {
+    color: black;
+    display: flex;
+  justify-content: flex-end;
+   
+  
+}
+
+.title {
+    color: grey;
+}
+
+/* ========================================================== */
+
+
+.homepage-header{
+  padding: 20px;
+  display: flex;  
+  justify-content: center;
 }
 
 .map, #map {
     width: 100%;
     height: 75%;
 }
-  
+
+.map{
+    height: 500px;
+}
+
 .window-content{  
     width: 200px;
     height: 200px;
 }
 
+
+/* ========================================================== */
+
 .form-container{
     width: 350px;
     height: 200px;
     margin-left: 20px;
+}
+
+
+
+
+/* ========================================================== */
+.login-background{
+    background-image: url(https://ridewithgps.com/photos/3059837/large.jpg);
+    height: 800px;
+    width: auto;
+    background-size: cover;
+}
+
+.signup-background{
+    background-image: url(https://ridewithgps.com/photos/13088135/large.jpg);
+    height: 800px;
+    width: auto;
+    background-size: cover;
+}
+
+.signup-container{
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.login-container{
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+  
+}
+
+.alice{
+    color: aliceblue;
+}
+
+
+/* =========================== */
+.search-by{
+    color: black;
+    padding: 5px;
+    
+}
+
+.search-description{
+margin-top: 20px;
+
+}
+.search{
+    border-radius: 5px;
+    border: solid;
+    border-width: 1px;
+    background-color: white;
+    margin: 1px;
+}
+
+#display-search-result{
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.card{
+    margin: 10px;
+}
+
+
+/* =FOOTER=========================================================== */
+#footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }

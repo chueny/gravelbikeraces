@@ -4,38 +4,45 @@
     {% block head %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/maps.css"/>
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <title>{% block title %}{% endblock %}</title>
     {% endblock %}
-  
-    <!-- <nav>
-      <div class="container">
-        <a href="/">Home</a>
-        <a href="/races"> Race Index</a>
-        <a href="/users"> Account </a> 
+    <nav>
+      <div class="navigation-container">
+        <div class="row"> 
+          <div class = "col "><h1>Gravel Bike Races</h1></div>
+          <div class = "col  nav-link">
+            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/races"> Find</a>
+            <a class="nav-link" href="/login"> Login </a> 
+            <a class="nav-link" href="/signup"> Signup </a>
+          </div>
+        </div>
       </div>
     </nav>
-  -->
-  <!-- teal: 20c997,  -->
+ 
+ 
   <!-- <div class="bg-success p-2 text-white " style="--bs-bg-opacity: .80;"> -->
-    <nav class="navbar navbar-expand-sm bg-success p-2 navbar-fixed-top"> 
+    <!-- <nav class="navbar navbar-expand-sm bg-white p-2 navbar-fixed-top"> 
       <div class="container-fluid">
         <a class="navbar-brand" href="#"></a>
+        <h1 class="title">Gravel Bike Races</h1>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
+       
         <div class="collapse navbar-collapse" id="navbarNav">
-          <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0"> -->
+        
             <ul class="navbar-nav ml-auto">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/races">Race Index</a>
+              <a class="nav-link" href="/races">Find</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -49,7 +56,7 @@
           </ul>
         </div>
       </div>
-    </nav>
+    </nav> -->
   <!-- </div> -->
     
   </head>

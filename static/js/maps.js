@@ -43,6 +43,7 @@ fetch('/map')
             <h1 class="window-title"><a href="/races/${race.race_id}">
             ${race.race_name}</a></h1>
             <p clas="windown-miles">${displayStar(average)}</p>
+           
             <p clas="windown-miles">${race.location}</p>
             <p clas="windown-miles">${race.distance}mi, ${race.elevation}ft</p>
         </div>

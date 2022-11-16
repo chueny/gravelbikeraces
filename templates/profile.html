@@ -6,11 +6,15 @@
 
 <h1>{{user.name}}'s Profile</h1>
 
-<h4>Races that you've interacted with:</h4>
+
 {% for review in user.reviews %}
-    <p class="display-review">{{ review.race.race_name}}</p>    
-    <p class="display-review">{{ review.score}}</p>
-    <p class="display-review">{{ review.review}}</p>        
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">{{review.race.race_name}}</h5>
+        <p class="card-text">Rating: {{ review.score}}</p>
+        <p class="card-text">Review: {{ review.review}}</p>
+    </div>
+</div>     
 {% endfor %}  
 
 

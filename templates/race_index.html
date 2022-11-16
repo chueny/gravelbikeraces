@@ -4,10 +4,6 @@
 
 {% block content %}
 
-<h1>A different way to view </h1>
-
-
-
 {#<script src="/static/js/maps.js"></script>
 <script
   async
@@ -15,17 +11,17 @@
 </script>
 #}
 
-<div class="container-fluid">
+<div class="race-index-container">
     <div class="row">
         <div class="col-3 search-by-specific">
-                <h4>Search for stuff</h4>
+                <h4 class="search-by"> Search by</h4>
                 <div class="search-by-average-ratings">
-                    <p class="search-description">Average</p>
-                    <button class="search avg" name="1">✩</button>
-                    <button class="search avg"name="2">✩✩</button>
-                    <button class="search avg" name="3">✩✩✩</button>
-                    <button class="search avg"name="4">✩✩✩✩</button>
-                    <button class="search avg"name ="5">✩✩✩✩✩</button>
+                    <p class="search-description">Rating</p>
+                    <button class="search avg " name="1">✩</button>
+                    <button class="search avg "name="2">✩✩</button>
+                    <button class="search avg " name="3">✩✩✩</button>
+                    <button class="search avg "name="4">✩✩✩✩</button>
+                    <button class="search avg "name ="5">✩✩✩✩</button>
                 </div>
                 <div id="search-by-distances">
                     <p class="search-description">Distance</p>
@@ -37,7 +33,7 @@
                 </div>
                 <div class="search-by-elevation">
                     <p class="search-description">Elevation</p>
-                    <button class="search elevation under_five_hun" name="500">under 500</button>
+                    <button class="search elevation under_five_hun" name="500"> <500</button>
                     <button class="search elevation five_one" name="501">501-1,000</button>
                     <button class="search elevation one_one" name="1001">1,001-2,000</button>
                     <button class="search elevation two_one"name="2001">2,001-3,000</button>
@@ -47,12 +43,12 @@
                 <div class="search-by-states root"></div>
         </div>
     
-        <div class="col-6 map">
-            <nav class="nav nav-pills nav-justified">
-                {#<a id="get_map" class="nav-link" href="#"> <button class="nav-link active ">Map</button></a> #}
-                <a id="get_grid" class="nav-link" href="#"> <button class="nav-link active search" name="grid">Grid</button></a>
-                <a id="get_link"class="nav-link" href="#"> <button class="nav-link active search" name="link">Link</button></a>
-            </nav>
+        <div class="col-9 map">
+            <div class="">
+                
+                <a id="get_grid" class="nav-link" href="#"> <button class="nav-link active search" name="grid">Grid - view all</button></a>
+                <a id="get_link"class="nav-link" href="#"> <button class="nav-link active search" name="link">Link - view all</button></a>
+            </div>
 
             <div id="display-search-result" >
             {% for race in races %}
@@ -74,16 +70,18 @@
 
             <div id="grid" hidden>    
             {% for race in races %}
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{{race.img_url}}" alt="gravel bike race photo">
-                    <div class="card-body">
-                    <p class="card-text"></p>
-                    <a href="/races/{{race.race_id}}">
-                        {{race.race_name}}</a>
-                    <p>{{race.distance}}mi</p>
-                    <p>{{race.elevation}}ft</p>
+            
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="{{race.img_url}}" alt="gravel bike race photo">
+                        <div class="card-body">
+                        <p class="card-text"></p>
+                        <a href="/races/{{race.race_id}}">
+                            {{race.race_name}}</a>
+                        <p>{{race.distance}}mi</p>
+                        <p>{{race.elevation}}ft</p>
+                        </div>
                     </div>
-                </div>
+            
             {% endfor %}
             </div>
             <div id="link" hidden>

@@ -23,7 +23,7 @@ function resetHiddenSearch(){
 }
 
 function filterByAvg(value) {
-  // console.log(value)
+  console.log(value)
   document.getElementById("grid").hidden = true; 
   document.getElementById("link").hidden = true;
   resetHiddenSearch();

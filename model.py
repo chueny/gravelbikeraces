@@ -53,6 +53,7 @@ class Review(db.Model):
     review_id = db.Column(db.Integer, primary_key = True, autoincrement=True)
     score = db.Column(db.Integer)
     review = db.Column(db.Text)
+    # date = db.Column(db.DateTime)
     race_id = db.Column(db.Integer, db.ForeignKey("races.race_id"))
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     
@@ -61,6 +62,14 @@ class Review(db.Model):
     
     user = db.relationship('User', back_populates = "reviews")
     race = db.relationship('Race', back_populates = "reviews")
+
+
+# class Like(db.Model):
+#     """ Like a race """
+#     __tablename__ = "like"
+
+#     like_id = db.Column(db.)
+
 
 
 def connect_to_db(flask_app, db_uri="postgresql:///reviews", echo=False):

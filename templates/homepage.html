@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %} Gravel Bike Races {% endblock %}
 
+
 {% block content %}
 
 <script src="/static/js/maps.js"></script>
@@ -9,40 +10,17 @@
   src="https://maps.googleapis.com/maps/api/js?key={{MY_API_KEY}}&callback=initMap">
 </script>
 
-<div class="homepage header">
-  <h1>Gravel bike races</h1>
-</div>
-
-<section class="map">
+<div class="homepage-container">
+  <h4 class="homepage-header">~ a visual overview of races ~</h4>
+  <section class="map">
     <div id="map"></div>
-</section>
-
-
-
-{# 
-    {% for race in races %}
-    <div class="card" style="width: 18rem;">
-        <img src="{{race.img_url}}}" class="card-img-top" alt="gravel bike picture">
-        <div class="card-body">
-          <h4><a href="/races/{{race.race_id}}">{{race.race_name}}</a></h4>
-          <p>{{race.average}}</p>
-          <p>{{race.location}}</p>
-          <p>{{race.distance}}</p>
-          <p>{{race.elevation}}</p>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-    {% endfor %}
-    #}
-<div>
-  <a href="/add-race">Add a new race!</a>
+  </section>
+  <div>
+    <a href="/add-race">Add a new race!</a>
+  </div>
+  <div><a href="/races">Filter races </a>
+  </div>
 </div>
-<div><a href="/races">Filter races </a>
-</div>
-
-
-
-
 
 
 {% endblock %}
