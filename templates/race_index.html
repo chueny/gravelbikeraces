@@ -53,15 +53,21 @@
             <div id="display-search-result" >
             {% for race in races %}
                 
-                <div class="card race-card" data-distance="{{race.distance}}" 
-                data-average="{{race.average}}" data-elevation="{{race.elevation}}" style="width: 18rem;"  hidden> {# add hidden later #}
-                    <img class="card-img-top" src="{{race.img_url}}" alt="gravel bike race photo">
-                    <div class="card-body">
-                    <p class="card-text"></p>
-                    <a href="/races/{{race.race_id}}">
-                        {{race.race_name}}</a>
-                    <p>{{race.distance}}mi</p>
-                    <p>{{race.elevation}}ft</p>
+                <div class="card race-card mb-3" data-distance="{{race.distance}}" 
+                data-average="{{race.average}}" data-elevation="{{race.elevation}}" 
+                style="width: 18rem;"  hidden> {# add hidden later #}
+                    <div class = "row g-0">
+                        <div class="col-md-4">
+                            <img class="img-fluid rounded-start horiz-card-photo" src="{{race.img_url}}" alt="gravel bike race photo">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title"> <a href="/races/{{race.race_id}}">
+                                {{race.race_name}}</a></h5>    
+                                <p class="card-text">{{race.distance}}mi </p> 
+                                <p class="card-text">{{race.elevation}}ft </p> 
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}

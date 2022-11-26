@@ -1,6 +1,7 @@
 """Models for bike racint app."""
 
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 db = SQLAlchemy()
 
@@ -18,6 +19,7 @@ class User(db.Model):
         return f"<User user_id={self.user_id} email={self.email}>"
         
     reviews = db.relationship('Review', back_populates = "user")
+    likes = db.relationship('Like', back_populates = "user")
 
 
 class Race(db.Model):
@@ -43,7 +45,7 @@ class Race(db.Model):
         return f"<Race race_id={self.race_id} race_name={self.race_name} distance={self.distance}>"
         
     reviews = db.relationship('Review', back_populates = "race")
-
+    likes = db.relationship('Like', back_populates = "race")
 
 class Review(db.Model):
     
@@ -53,7 +55,7 @@ class Review(db.Model):
     review_id = db.Column(db.Integer, primary_key = True, autoincrement=True)
     score = db.Column(db.Integer)
     review = db.Column(db.Text)
-    # date = db.Column(db.DateTime)
+    date = db.Column(db.DateTime) ##datetime.now when called on server.py 
     race_id = db.Column(db.Integer, db.ForeignKey("races.race_id"))
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     
@@ -64,11 +66,19 @@ class Review(db.Model):
     race = db.relationship('Race', back_populates = "reviews")
 
 
-# class Like(db.Model):
-#     """ Like a race """
-#     __tablename__ = "like"
+class Like(db.Model):
+    """ Like a race """
+    __tablename__ = "like"
 
-#     like_id = db.Column(db.)
+    like_id = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    race_id = db.Column(db.Integer, db.ForeignKey("races.race_id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+
+    def __repr__(self):
+        return f"<Like like_id={self.like_id} user_id={self.user_id}>"
+    
+    user = db.relationship('User', back_populates = "likes")
+    race = db.relationship('Race', back_populates = "likes")
 
 
 

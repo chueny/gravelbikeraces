@@ -18,6 +18,9 @@
           <div class = "col  nav-link">
             <a class="nav-link" href="/">Home</a>
             <a class="nav-link" href="/races"> Find</a>
+            {% if session.get('user_email')%}
+            <a class="nav-link" href="/profile"> Profile </a> 
+            {% endif %}
             <a class="nav-link" href="/login"> Login </a> 
             <a class="nav-link" href="/signup"> Signup </a>
           </div>

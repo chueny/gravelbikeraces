@@ -49,7 +49,7 @@ for n in range(10):
     for _ in range(10):
         random_race=choice(races_in_db)
         score = randint(1, 5)
-        comment = "Random review here"
+        comment = "What a race!"
 
         review = crud.create_review(user, random_race, score, comment)
         model.db.session.add(review)

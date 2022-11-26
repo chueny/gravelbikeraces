@@ -68,6 +68,35 @@ html, body {
 }
 
 
+/* ===Add a new bike race=================== */
+
+.add-race-background{
+    background-image: url(https://ridewithgps.com/photos/12747623/large.jpg);
+    height: 900px;
+    width: auto;
+    background-size: cover;
+    color:aliceblue;
+
+
+}
+.add-race-container{
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+/* .select_rating{
+    padding: .375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #574953;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+} */
+
 
 
 /* ========================================================== */

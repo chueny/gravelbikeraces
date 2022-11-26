@@ -6,6 +6,7 @@ from model import connect_to_db, db
 import crud
 import os
 import requests 
+from datetime import datetime
 
 from jinja2 import StrictUndefined
 
@@ -145,6 +146,7 @@ def show_login_page():
 def signup_user():
     """Signup for auser account"""
     name = request.form.get('name')
+    name.upper()
     email = request.form.get("email")
     password = request.form.get('password')
 
@@ -171,8 +173,13 @@ def update_score():
     updated_score = request.JSON["updated_score"]
     crud.update_score(review_id, updated_score)
 
+    #date info 
+    
+
     new_review = request.form.get('review')
-    crud.add_review(review_id, new_review)
+    date = datetime.now()
+    print(date)
+    crud.add_review(review_id, date, new_review)
     db.session.commit()
 
     return "Success"
@@ -182,22 +189,23 @@ def update_score():
 def create_rating(race_id):
     """Create a new rating and review for the race """
     logged_in_email = session.get('user_email')
-    review_score = request.form.get('rating')
-    new_review = request.form.get('review')
+    add_rating = request.form.get('rating')
+    add_review = request.form.get('review')
+    date = datetime.now()
 
     if logged_in_email is None:
         flash("You must be log in to rate a race!")
-    elif not review_score and not new_review:
+    elif not add_rating and not add_review:
         flash("Error: you didn't select a score nor write a review.")
     else:
         user = crud.get_user_by_email(logged_in_email)
         race = crud.get_race_by_id(race_id)
 
-        review = crud.create_review(user, race, int(review_score), new_review)
+        review = crud.create_review(user, race, add_rating, date, add_review)
         db.session.add(review)
         db.session.commit()
 
-        flash(f"You rated {review_score} out of 5 and wrote a review for this race!")
+        flash(f"You rated {review.score} out of 5 and wrote a review for this race!")
        
     return redirect(f"/races/{race_id}")
 
@@ -231,7 +239,7 @@ def fetch_gelocation(): #do we need a userId?
     # use city, state and input into google geocode API and make a resquest 
     url = 'https://maps.googleapis.com/maps/api/geocode/json?address='
     url = url + location +',+' + state + '&key=' + geocode_key
-   
+    
     
     res = requests.get(url)
     geo_data = res.json()

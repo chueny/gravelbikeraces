@@ -35,11 +35,9 @@ def get_race_by_id(race_id):
 
     return Race.query.get(race_id)
 
-def create_review(user, race, score, review):
+def create_review(user, race, score, date, review):
     """Create and return a race review"""
-
-    review = Review(user=user, race=race, score=score, review=review)
-    return review
+    return Review(user=user, race=race, score=score, date=date, review = review)
 
 def get_all_reviews():
     """Get reviews by id"""
@@ -56,35 +54,39 @@ def update_score(review_id, new_score):
 def star_avg(race_id): # race_id or review_id
     """Calculate the average of the score for a bike race"""
     race = Race.query.get(race_id)
-    sum = 0
-    len = 0
-    for race in race.reviews:
-        sum += race.score
-        len += 1
-       
-    avg = int(sum/len)
-
-    if avg == 1:
-        avg = "✩"
-    elif avg == 2:
-        avg = "✩✩"
-    elif avg == 3:
-        avg = "✩✩✩"
-    elif avg == 4:
-        avg = "✩✩✩✩"
-    else: 
-        avg = "✩✩✩✩✩"
-    #is there a way that we can repackage this so 
-    #that we can utilize this funciton for somewhere else?
-    return avg
+    
+    # for race in race.review:
+    #     sum = race.average
+    
 
 
-def add_review(reivew_id, new_review):
+    # avg = int(sum/len)
+
+    # if avg == 1:
+    #     avg = "✩"
+    # elif avg == 2:
+    #     avg = "✩✩"
+    # elif avg == 3:
+    #     avg = "✩✩✩"
+    # elif avg == 4:
+    #     avg = "✩✩✩✩"
+    # else: 
+    #     avg = "✩✩✩✩✩"
+    # #is there a way that we can repackage this so 
+    # #that we can utilize this funciton for somewhere else?
+    # return avg
+
+
+def add_review(reivew_id, date, new_review):
     """Create and return a race review """
-    review = Review.query.get(reivew_id)
+    review = Review.query.get(review_id)
     review.score = new_review
     
-    
+def create_like(user_id, date, race_id):
+    """Like a race"""
+
+    like = Like(user_id = user_id, race_id=race_id)
+    return like
 
 if __name__ == '__main__':
     from server import app

@@ -3,48 +3,52 @@
 
 {% block content %}
 {% if session.get('user_email') %}
+<div class="add-race-background">
+<div class="add-race-container">
 
-<h1>Would you like to add a new race? </h1>
 <form action="/fetch-geolocation" method="POST" class="form-container">
+    <h1>Add a new race? </h1>
     <div class="form-group">
-      <label for="race_name">Name of the race:</label>
-      <input type="text" class="form-control" placeholder="name of gravel race" name="race">
+      <label for="race_name">Name:</label>
+      <input type="text" class="form-control" placeholder="name of gravel race" name="race" required>
     </div>
     <div class="form-group">
         <label for="race_miles">How would you rate this race: </label>
-            <select name="rating">
-                <option value="">Select rating</option>
+            <select name="rating" clas="select_rating" required>
+                <option value="" class="select_rating">Select rating</option>
                 {% for num in range(1, 6) %}
                 <option value="{{num}}">{{num}}</option>
                 {% endfor %}
             </select>
     </div>
     <div class="form-group">
-      <label for="race_miles">How many miles: </label>
-      <input type="number" class="form-control" placeholder="miles" name="distance">
+      <label for="race_miles">Miles: </label>
+      <input type="number" class="form-control" placeholder="miles" name="distance" required>
     </div>
     <div class="form-group">
-        <label for="race_elevation">How much elevation (feet):</label>
-        <input type="number" class="form-control" placeholder="elevation" name="elevation">
+        <label for="race_elevation">Elevation (feet):</label>
+        <input type="number" class="form-control" placeholder="elevation" name="elevation" required>
     </div>
     <div class="form-group">
         <label for="race_city">City</label>
-        <input type="text" class="form-control" placeholder="city" name="city">
+        <input type="text" class="form-control" placeholder="city" name="city" required>
     </div>
     <div class="form-group">
         <label for="race_state">State</label>
-        <input type="text" class="form-control" placeholder="state" name="state">
+        <input type="text" class="form-control" placeholder="state" name="state" required>
     </div>
     <div class="form-group">
         <label for="overview">Description</label>
-        <input type="text" class="form-control" placeholder="description" name="overview">
+        <input type="text" class="form-control" placeholder="description" name="overview" required>
     </div>
     <div class="form-group">
         <label for="img_url">Img</label>
-        <input type="url" class="form-control" placeholder="img_url" name="img_url">
+        <input type="url" class="form-control" placeholder="img_url" name="img_url" required>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+</div>
+</div>
 {% endif %}
 
 {% endblock %}
