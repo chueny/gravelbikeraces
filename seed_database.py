@@ -3,7 +3,7 @@
 import os
 import json
 from random import choice, randint
-#from datetime import datetime
+from datetime import datetime
 
 import crud
 import model
@@ -32,7 +32,16 @@ for race in race_data:
     img_url = race['img_URL']
     
 
-    db_race = crud.create_race(race_name, average, distance, elevation, location, state, gps_lat, gps_lon, overview, img_url)
+    db_race = crud.create_race(race_name, 
+                                average, 
+                                distance, 
+                                elevation, 
+                                location, 
+                                state, 
+                                gps_lat, 
+                                gps_lon, 
+                                overview, 
+                                img_url)
     races_in_db.append(db_race)
 
 model.db.session.add_all(races_in_db)
@@ -42,6 +51,7 @@ for n in range(10):
     name=f'name{n}'
     email = f'user{n}@test.com'
     password = 'test'
+    date = datetime.now()
 
     user = crud.create_user(name, email, password)
     model.db.session.add(user)
@@ -51,7 +61,7 @@ for n in range(10):
         score = randint(1, 5)
         comment = "What a race!"
 
-        review = crud.create_review(user, random_race, score, comment)
+        review = crud.create_review(user, random_race, comment)
         model.db.session.add(review)
 
 model.db.session.commit()

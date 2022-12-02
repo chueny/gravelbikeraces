@@ -1,6 +1,6 @@
 """CRUD operations."""
 
-from model import db, User, Race, Review, connect_to_db
+from model import db, User, Race, Review, Like, connect_to_db
 
 def create_user(name, email, password):
     """Create and return a new user"""
@@ -23,7 +23,16 @@ def get_user_by_email(email):
 def create_race(race_name, average,  distance, elevation, location, state, gps_lat, gps_lon, overview, img_url):
     """Create race and return a new race"""
     
-    race = Race(race_name = race_name, average=average, distance = distance, elevation= elevation, location = location, state = state, gps_lat = gps_lat, gps_lon = gps_lon, overview=overview, img_url = img_url)
+    race = Race(race_name = race_name, 
+                average=average, 
+                distance = distance, 
+                elevation= elevation, 
+                location = location, 
+                state = state, 
+                gps_lat = gps_lat, 
+                gps_lon = gps_lon, 
+                overview=overview, 
+                img_url = img_url)
     return race
 
 def get_all_races():
@@ -34,47 +43,49 @@ def get_race_by_id(race_id):
     """Return a race by id"""
 
     return Race.query.get(race_id)
+def update_race_rating(rating):
+    """Adds a new rating into the database"""
+    race = Race.query.filter_by(race_id)
+    
 
-def create_review(user, race, score, date, review):
+def update_rating(race_id):
+    """" Take new rating and add to the race.averages and compute new ratings """
+    #How do we add the new rating/score to the exitings race.average??
+    current_rating = Race.query.filter_by(race_id=race_id).all() 
+    length = len(current_rating)
+    total_rating = 0
+
+    for race_entry in current_rating:
+        total_rating = total_rating + race_entry.average
+        
+    avg = (total_rating)/(length)
+
+    # new_avg_rating = (current_rating + rating) / length 
+    race = Race.query.filter_by(race_id=race_id)
+    race.averge = avg 
+    db.session.commit()
+
+
+def create_review(user, race, review):
     """Create and return a race review"""
-    return Review(user=user, race=race, score=score, date=date, review = review)
+   
+    return Review(user=user, race=race, review = review)
 
 def get_all_reviews():
     """Get reviews by id"""
 
     return Review.query.all()
 
-
-def update_score(review_id, new_score):
-    """Create and return a race score"""
-    score = Review.query.get(review_id)
-    review.score = new_score
+#AM I EVEN USING THIS?
+# def update_score(review_id, new_score):
+#     """Create and return a race score"""
+#     score = Review.query.get(review_id)
+#     review.score = new_score
 
 
 def star_avg(race_id): # race_id or review_id
     """Calculate the average of the score for a bike race"""
     race = Race.query.get(race_id)
-    
-    # for race in race.review:
-    #     sum = race.average
-    
-
-
-    # avg = int(sum/len)
-
-    # if avg == 1:
-    #     avg = "✩"
-    # elif avg == 2:
-    #     avg = "✩✩"
-    # elif avg == 3:
-    #     avg = "✩✩✩"
-    # elif avg == 4:
-    #     avg = "✩✩✩✩"
-    # else: 
-    #     avg = "✩✩✩✩✩"
-    # #is there a way that we can repackage this so 
-    # #that we can utilize this funciton for somewhere else?
-    # return avg
 
 
 def add_review(reivew_id, date, new_review):
@@ -82,7 +93,8 @@ def add_review(reivew_id, date, new_review):
     review = Review.query.get(review_id)
     review.score = new_review
     
-def create_like(user_id, date, race_id):
+    
+def create_like(user_id, race_id):
     """Like a race"""
 
     like = Like(user_id = user_id, race_id=race_id)

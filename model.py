@@ -53,7 +53,7 @@ class Review(db.Model):
     __tablename__ = "review"
     
     review_id = db.Column(db.Integer, primary_key = True, autoincrement=True)
-    score = db.Column(db.Integer)
+    score = db.Column(db.Integer) #what the heck is this for?
     review = db.Column(db.Text)
     date = db.Column(db.DateTime) ##datetime.now when called on server.py 
     race_id = db.Column(db.Integer, db.ForeignKey("races.race_id"))
@@ -80,6 +80,22 @@ class Like(db.Model):
     user = db.relationship('User', back_populates = "likes")
     race = db.relationship('Race', back_populates = "likes")
 
+def example_data():
+    """Create some sample data."""
+    #In case this is run more than once, empty out existing data
+    #Only want to test users for login
+    User.query.delete()
+    # Race.query.delete()
+    # Review.query.delete()
+    # Like.query.delete()
+
+    #add sample users
+    chue =User(name="Chue", email="chue@gmail.com", password="chue")
+    lily =User(name="Lily", email="lily@gmail.com", password="lily")
+    bobbi =User(name="Bobbi", email="bobbi@gmail.com", password="bobbi")
+    cocoa =User(name="Cocoa", email="cocoa@gmail.com", password="cocoa")
+    db.session.add_all([chue, lily, bobbi, cocoa])
+    db.session.commit()
 
 
 def connect_to_db(flask_app, db_uri="postgresql:///reviews", echo=False):

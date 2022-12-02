@@ -15,6 +15,7 @@
     <div class="row">
         <div class="col-3 search-by-specific">
                 <h4 class="search-by"> Search by</h4>
+                
                 <div class="search-by-average-ratings">
                     <p class="search-description">Rating</p>
                     <button class="search avg " name="1">✩</button>
@@ -33,7 +34,7 @@
                 </div>
                 <div class="search-by-elevation">
                     <p class="search-description">Elevation</p>
-                    <button class="search elevation under_five_hun" name="500"> <500</button>
+                    <button class="search elevation under_five_hun" name="500"> >500</button>
                     <button class="search elevation five_one" name="501">501-1,000</button>
                     <button class="search elevation one_one" name="1001">1,001-2,000</button>
                     <button class="search elevation two_one"name="2001">2,001-3,000</button>
@@ -43,12 +44,49 @@
                 <div class="search-by-states root"></div>
         </div>
     
-        <div class="col-9 map">
-            <div class="">
-                
-                <a id="get_grid" class="nav-link" href="#"> <button class="nav-link active search" name="grid">Grid - view all</button></a>
-                <a id="get_link"class="nav-link" href="#"> <button class="nav-link active search" name="link">Link - view all</button></a>
+        <div class="col-9 search-results">
+            <div class="display-all">
+            {#     <div class="search-by-all-link"> </div>    #}
+                    <a id="get_link"class="nav-link" href="#"> <button class="nav-link active search" name="link">Link - all</button></a>
+              
+            {#     <div class="">   #}
+                  <a id="get_grid" class="nav-link" href="#"> <button class="nav-link active search" name="grid">Grid - all</button></a>
+                 
             </div>
+           
+
+            <div id="link" hidden>
+                <div class="container text-center">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Race</th>
+                                <th scope="col">Rating</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">Distance</th>
+                                <th scope="col">Elevation</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% for race in races %}
+                                <tr>
+                                    
+                                    <td><a href="/races/{{race.race_id}}">
+                                        {{race.race_name}}</a></td>
+                                    <td>{{race.average}}</td>
+                                    <td>{{race.location}}, {{race.state}}</td>
+                                    <td>{{race.distance}}mi</td>
+                                    <td>{{race.elevation}}ft</td>
+                                   
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+               
+            </div>
+
 
             <div id="display-search-result" >
             {% for race in races %}
@@ -64,6 +102,7 @@
                             <div class="card-body">
                                 <h5 class="card-title"> <a href="/races/{{race.race_id}}">
                                 {{race.race_name}}</a></h5>    
+                                <p class="card-text">{{race.location}}, {{race.state}} </p> 
                                 <p class="card-text">{{race.distance}}mi </p> 
                                 <p class="card-text">{{race.elevation}}ft </p> 
                             </div>
@@ -73,8 +112,8 @@
                 {% endfor %}
             </div>
        
-
-            <div id="grid" hidden>    
+  
+            <div id="grid" >    
             {% for race in races %}
             
                     <div class="card" style="width: 18rem;">
@@ -83,26 +122,16 @@
                         <p class="card-text"></p>
                         <a href="/races/{{race.race_id}}">
                             {{race.race_name}}</a>
+                        <p>{{race.location}}, {{race.state}} </p> 
                         <p>{{race.distance}}mi</p>
                         <p>{{race.elevation}}ft</p>
                         </div>
                     </div>
             
             {% endfor %}
-            </div>
-            <div id="link" hidden>
-                {% for race in races %}
-                <div class="container text-center">
-                    <div class="row">
-                         <div class="col-6 col-sm-3"><a href="/races/{{race.race_id}}">
-                            {{race.race_name}}</a></div>
-                            <div class="col-6 col-sm-2">Average starts? </div>
-                            <div class="col-6 col-sm-2">{{race.distance}}mi</div>
-                            <div class="col-6 col-sm-2">{{race.elevation}}ft</div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
+
+          </div>
+           
         </div>
 </div>
 <script src="/static/js/filterByElevation.js"></script>

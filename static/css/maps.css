@@ -59,6 +59,12 @@ html, body {
 }
 
 
+
+.window-title{
+    font-size: 15px;
+}
+
+
 /* ========================================================== */
 
 .form-container{
@@ -132,7 +138,13 @@ html, body {
 }
 
 
-/* =========================== */
+/* ========INDEX PAGE=================== */
+.display-all{
+    display: flex;
+    justify-content: flex-end;
+
+}
+
 .search-by{
     color: black;
     padding: 5px;
@@ -168,4 +180,5 @@ margin-top: 20px;
     bottom: 0;
     width: 100%;
     text-align: center;
+    z-index: -1;
 }

@@ -11,9 +11,16 @@
     <img class="card-img-top" src="{{race.img_url}}" alt="picture of gravel biking">
     <div class="card-body">
       <h5 class="card-title">{{race.race_name}}</h5>
-      <h6>Average Rating: <span class="stars">{{avg}}</span></h6>
-      
-      <p>Location: {{race.location}} </p>
+      <h6>Average Rating: <span class="stars"> {{race.average}} </span></h6>
+       {# 
+        {% if {{race.average}} == 1 %} ✩
+        {% if {{race.average}} == 2 %} ✩✩
+        {% if {{race.average}} == 3 %}✩✩✩
+        {% if {{race.average}} == 4 %}✩✩✩✩
+        {% if {{race.average}} == 5 %}✩✩✩✩✩
+        {% endif %}
+        #}
+      <p>Location: {{race.location}}, {{race.state}} </p>
       <p>Distance: {{race.distance}} miles </p>
       <p>Elevation: {{race.elevation}} feet</p>
       <p>Description: {{race.overview}}</p>
@@ -31,10 +38,14 @@
 
 {% if session.get('user_email')%}
 
-
+{# 
+<form action="/races/{{race.race_id}}/like" method="POST">
+    <h5 class="add_like" name="like">Favorite this race? <button>&#10084;</button></h5>
+</form>
+#}
 
 <form action="/races/{{race.race_id}}/ratings" method="POST">
-<h5 class="add_like">Favorite this race? &#10084;</h5>
+
 <h5>Rate this race</h5>
     <p>
         Rating: 
@@ -55,7 +66,7 @@
     </div>
 
     <div class="mb-3">
-        <button>Submit</button>
+        <input class ="review-btn" type="submit" value = "Submit">
     </div>
 </form>
 {% endif %}

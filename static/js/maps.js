@@ -38,14 +38,15 @@ fetch('/map')
         const raceInfoContent = `
         <div class="window-content">
             <div class = "race-thumbail">
-                <img src="${race.img_url}" alt="bike race"/>
+                <img src="${race.img_url}" alt="bike race" width="200" height="auto"/>
             </div>
-            <h1 class="window-title"><a href="/races/${race.race_id}">
-            ${race.race_name}</a></h1>
-            <p clas="windown-miles">${displayStar(average)}</p>
-           
-            <p clas="windown-miles">${race.location}</p>
-            <p clas="windown-miles">${race.distance}mi, ${race.elevation}ft</p>
+            <div class ="race-info">
+                <h1 class="window-title"><a href="/races/${race.race_id}">
+                ${race.race_name}</a></h1>
+                <p clas="windown-miles">${displayStar(average)}</p>
+                <p clas="windown-miles">${race.location}, ${race.state}</p>
+                <p clas="windown-miles">${race.distance}mi, ${race.elevation}ft</p>
+            </div>
         </div>
         `;
 

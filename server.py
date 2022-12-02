@@ -20,7 +20,6 @@ geocode_key = os.environ['GEOCODE_KEY']
 @app.route('/')
 def homepage():
     """Show homepage""" 
-    # races = crud.get_all_races()
 
     return render_template('homepage.html', MY_API_KEY = google_API)
 
@@ -43,6 +42,7 @@ def show_map():
         dict_races['gps_lon'] = race.gps_lon
         dict_races['img_url'] = race.img_url
         dict_races['location'] = race.location
+        dict_races['state'] = race.state
 
         races.append(dict_races)
     
@@ -54,22 +54,6 @@ def all_races():
     """View all races."""
 
     races = crud.get_all_races()
-    # avg = []
-    # for race in races:
-    #     if race.average == 1:
-    #         return "✩"
-    #     if race.average == 2:
-    #         return "✩✩"
-    #     if race.average == 3:
-    #         return "✩✩✩"
-    #     if race.average == 4:
-    #         return "✩✩✩✩"
-    #     if race.average == 5:
-    #         return "✩✩✩✩✩"
-
-    # unstructure the variables?
-    # do something with the races.averge 
-    # (for race in races etc. etc.)
 
     return render_template("race_index.html", races=races)
 
@@ -78,9 +62,30 @@ def all_races():
 def show_race(race_id):
     """Show details on a race"""
     race = crud.get_race_by_id(race_id)
-    avg = crud.star_avg(race_id)
+    #this is becuase I removed the review.score
+    #avg = crud.star_avg(race_id)
+
+    # sum = 0
+    # len = 0
+    # for review in race.reviews:
+    #     sum += review.score
+    #     len += 1
+
+    # avg = int(sum/len)
+    # if avg == 1:
+    #     avg = "✩"
+    # elif avg == 2:
+    #     avg = "✩✩"
+    # elif avg == 3:
+    #     avg = "✩✩✩"
+    # elif avg == 4:
+    #     avg = "✩✩✩✩"
+    # else: 
+    #     avg = "✩✩✩✩✩"
+
+    # print(f"avg:{avg}")
     
-    return render_template("race_details.html", race=race, avg = avg)
+    return render_template("race_details.html", race=race) #, avg=avg)
 
 
 @app.route('/users')
@@ -106,6 +111,7 @@ def get_login_page():
 @app.route('/login', methods=["POST"])
 def login_user():
     """Login to a user account"""
+    name = request.form.get("name")
     email = request.form.get("email")
     password = request.form.get("password")
 
@@ -114,9 +120,9 @@ def login_user():
         flash("Please sign up for an account!")
         # print(f"YOU ARE NOT A USER")
         return redirect("/signup")
-    if not user.password != password:
+    if user.password != password:
         flash("The passward you entered was incorrect!")
-        # print(f"YOU ARE NOT A USER")
+        print(f"YOU ARE NOT A USER")
         return redirect("/login")
     else:
         session['user_email'] = user.email
@@ -128,11 +134,15 @@ def login_user():
 def show_profile_page():
     """Shows a user's profile page."""
     logged_in_email = session.get('user_email')
+    # user = session.get('user')
+    print(logged_in_email)
     user = crud.get_user_by_email(logged_in_email)
     #class 
-
-    if logged_in_email is None:
+    #logged_in_email 
+    #USE try, except, else, finally to handle errors 
+    if user is None:
         flash("You must be log in to rate a race!")
+        redirect ('/login')
     else:
         return render_template("profile.html", user=user)
 
@@ -146,8 +156,8 @@ def show_login_page():
 def signup_user():
     """Signup for auser account"""
     name = request.form.get('name')
-    name.upper()
-    email = request.form.get("email")
+    name = name.upper()
+    email = request.form.get('email')
     password = request.form.get('password')
 
     user = crud.get_user_by_email(email)
@@ -172,14 +182,12 @@ def update_score():
     review_id = request.json["review_id"]
     updated_score = request.JSON["updated_score"]
     crud.update_score(review_id, updated_score)
-
-    #date info 
     
 
     new_review = request.form.get('review')
-    date = datetime.now()
+    # date = datetime.now()
     print(date)
-    crud.add_review(review_id, date, new_review)
+    crud.add_review(review_id, new_review)
     db.session.commit()
 
     return "Success"
@@ -188,10 +196,11 @@ def update_score():
 @app.route('/races/<race_id>/ratings', methods =["POST"])
 def create_rating(race_id):
     """Create a new rating and review for the race """
+
     logged_in_email = session.get('user_email')
     add_rating = request.form.get('rating')
     add_review = request.form.get('review')
-    date = datetime.now()
+    #date = datetime.now()
 
     if logged_in_email is None:
         flash("You must be log in to rate a race!")
@@ -201,14 +210,42 @@ def create_rating(race_id):
         user = crud.get_user_by_email(logged_in_email)
         race = crud.get_race_by_id(race_id)
 
-        review = crud.create_review(user, race, add_rating, date, add_review)
+        review = crud.create_review(user, race, add_review)
+        
+        #commit avarage rating to database  first databse
+        # race =  
+        update_rating = crud.update_rating(race_id)
         db.session.add(review)
         db.session.commit()
-
-        flash(f"You rated {review.score} out of 5 and wrote a review for this race!")
+        
+    
+        flash(f"You rated {add_rating} out of 5 and wrote a review for this race!")
        
     return redirect(f"/races/{race_id}")
 
+# @app.route('/races/<race_id>/like', methods =["POST"])
+# def like_race(race_id):
+#     """Add a like/favorite for user and review for the race"""
+#     logged_in_email = session.get('user_email')
+#     #grab the like (+1)
+
+#     #add_rating = request.form.get('rating')
+#     favorite = request.form.get('like')
+#     print(favorite)
+#     #date = datetime.now()
+
+#     if logged_in_email is None:
+#         flash("You must be logged in to favorite a race!")
+#     else:
+#         user = crud.get_user_by_email(logged_in_email)
+#         race = crud.get_race_by_id(race_id)
+
+#         like = crud.create_like(user, race)
+
+#         db.session.add(like)
+#         db.session.commit()
+       
+#     return redirect(f"/races/{race_id}")
 
 @app.route('/add-race')
 def add_race(): 
@@ -228,7 +265,8 @@ def fetch_gelocation(): #do we need a userId?
     """Create a new race and adds it to the database"""
 
     race_name = request.form.get('race')
-    average = request.form.get('average')
+    average = request.form.get('rating')
+    print(f"average")
     distance = request.form.get('distance')
     elevation = request.form.get('elevation')
     location = request.form.get('city')

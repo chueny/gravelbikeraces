@@ -88,6 +88,7 @@ function handleFilterButtonClick(type, value) {
       filterByElevation(value);
       break;
     default: 
+      //we want to display link all the time, remove grid cause it doesnt matter now
       document.getElementById("grid").hidden = true;
       document.getElementById("link").hidden = true;
   }
