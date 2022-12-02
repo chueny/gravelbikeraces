@@ -46,15 +46,12 @@
     
         <div class="col-9 search-results">
             <div class="display-all">
-            {#     <div class="search-by-all-link"> </div>    #}
-                    <a id="get_link"class="nav-link" href="#"> <button class="nav-link active search" name="link">Link - all</button></a>
+                 <a id="get_link"class="nav-link" href="#"> <button class="nav-link active search" name="link">Link - all</button></a>
               
-            {#     <div class="">   #}
-                  <a id="get_grid" class="nav-link" href="#"> <button class="nav-link active search" name="grid">Grid - all</button></a>
-                 
+          
+                <a id="get_grid" class="nav-link" href="#"> <button class="nav-link active search" name="grid">Grid - all</button></a>
             </div>
            
-
             <div id="link" hidden>
                 <div class="container text-center">
                         <table class="table">
@@ -83,17 +80,14 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
-               
             </div>
-
 
             <div id="display-search-result" >
             {% for race in races %}
                 
-                <div class="card race-card mb-3" data-distance="{{race.distance}}" 
+                <div class="card race-card " data-distance="{{race.distance}}" 
                 data-average="{{race.average}}" data-elevation="{{race.elevation}}" 
-                style="width: 18rem;"  hidden> {# add hidden later #}
+                style="width: 50rem;"  hidden> 
                     <div class = "row g-0">
                         <div class="col-md-4">
                             <img class="img-fluid rounded-start horiz-card-photo" src="{{race.img_url}}" alt="gravel bike race photo">
@@ -112,11 +106,9 @@
                 {% endfor %}
             </div>
        
-  
             <div id="grid" >    
             {% for race in races %}
-            
-                    <div class="card" style="width: 18rem;">
+                    <div class="card" >
                         <img class="card-img-top" src="{{race.img_url}}" alt="gravel bike race photo">
                         <div class="card-body">
                         <p class="card-text"></p>
@@ -127,11 +119,9 @@
                         <p>{{race.elevation}}ft</p>
                         </div>
                     </div>
-            
+        
             {% endfor %}
-
-          </div>
-           
+            </div>
         </div>
 </div>
 <script src="/static/js/filterByElevation.js"></script>

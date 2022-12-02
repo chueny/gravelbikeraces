@@ -12,11 +12,6 @@ html, body {
 }
 
 /* =NAVIGATION========================================================= */
-.navigation-container{
-
-  
-    
-}
 
 .column-races{
     display: flex;
@@ -26,7 +21,7 @@ html, body {
 .nav-link {
     color: black;
     display: flex;
-  justify-content: flex-end;
+    justify-content: flex-end;
    
   
 }
@@ -35,7 +30,7 @@ html, body {
     color: grey;
 }
 
-/* ========================================================== */
+/* ====HOMEPAGE====================================================== */
 
 
 .homepage-header{
@@ -50,15 +45,13 @@ html, body {
 }
 
 .map{
-    height: 500px;
+    height: 650px;
 }
 
 .window-content{  
     width: 200px;
     height: 200px;
 }
-
-
 
 .window-title{
     font-size: 15px;
@@ -102,7 +95,6 @@ html, body {
     border-radius: 0.25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 } */
-
 
 
 /* ========================================================== */
@@ -152,9 +144,10 @@ html, body {
 }
 
 .search-description{
-margin-top: 20px;
+    margin-top: 20px;
 
 }
+
 .search{
     border-radius: 5px;
     border: solid;
