@@ -55,7 +55,7 @@ def all_races():
 
     races = crud.get_all_races()
 
-    return render_template("race_index.html", races=races)
+    return render_template("find.html", races=races)
 
 
 @app.route('/races/<race_id>')
@@ -156,7 +156,7 @@ def show_login_page():
 def signup_user():
     """Signup for auser account"""
     name = request.form.get('name')
-    name = name.upper()
+    name = name.title()
     email = request.form.get('email')
     password = request.form.get('password')
 

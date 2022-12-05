@@ -3,21 +3,31 @@
 
 {% block content %}
 
+<div class="profile-header">
+    <h2 >{{user.name}}'s Profile</h2>
+</div>
+<div> 
+        {# <h5>Favorited Bike Races</h5>
+            <p>Make this part of an aside section?</p>
+        #}
+        <div class="container"></div>
+        <h5 class="profile-bike">Bike races that you've reviewed.</h5>
+        <div class ="row">
+            {% for review in user.reviews %}
+            <div class="col-md">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title"><span style="font-weight:bold">{{review.race.race_name}}</span></h5>
+                        <p class="your-review"><span style="font-weight:bold">Your rating</span>: {{ review.score}}</p>
+                        <p class="your-review"><span style="font-weight:bold">Your review</span>: {{ review.review}}</p>
+                    </div>
+                </div>  
+            </div>
+            {% endfor %}  
+        </div>
+      
+</div>
 
-<h1>{{user.name}}'s Profile</h1>
-<h2>Favorited Bike Races</h2>
-<p>Make this part of an aside section?</p>
-
-<h2>Bike races that you've rated or reviewed.</h2>
-{% for review in user.reviews %}
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title">{{review.race.race_name}}</h5>
-        <p class="card-text">Rating: {{ review.score}}</p>
-        <p class="card-text">Review: {{ review.review}}</p>
-    </div>
-</div>     
-{% endfor %}  
 
 
 {#   

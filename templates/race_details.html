@@ -6,69 +6,68 @@
 
 {% block content %}
 
+<div class = "container">
+    <div class = "row">
+        <div class = "col-sm ">
+            <div class="card">
+            <img class="card-img-top" src="{{race.img_url}}" alt="picture of gravel biking">
+            <div class="card-body">
+            <h5 class="card-title">{{race.race_name}}</h5>
+            <h6>Average Rating: <span class="stars"> {{race.average}} </span></h6>
+            {# 
+                {% if {{race.average}} == 1 %} ✩
+                {% if {{race.average}} == 2 %} ✩✩
+                {% if {{race.average}} == 3 %}✩✩✩
+                {% if {{race.average}} == 4 %}✩✩✩✩
+                {% if {{race.average}} == 5 %}✩✩✩✩✩
+                {% endif %}
+                #}
+            <p>Location: {{race.location}}, {{race.state}} </p>
+            <p>Distance: {{race.distance}} miles </p>
+            <p>Elevation: {{race.elevation}} feet</p>
+            <p>Description: {{race.overview}}</p>
+            <p class="card-text"></p>
+            </div>
+            </div>
+        </div>
+    {% if session.get('user_email')%}
+        <div class = "col-sm">
+            <form action="/races/{{race.race_id}}/ratings" method="POST">
+                <h5>Would you like to rate this race?</h5>
+                <p>
+                    Rating: 
+                    <select name="rating" required>
+                        <option value="">Select rating</option>
+                        {% for num in range(1, 6) %}
+                        <option value="{{num}}" >{{num}}</option>
+                        {% endfor %}
+                    </select>
+                </p>
 
-<div class="card" style="width: 38rem; margin-right: 20px;">
-    <img class="card-img-top" src="{{race.img_url}}" alt="picture of gravel biking">
-    <div class="card-body">
-      <h5 class="card-title">{{race.race_name}}</h5>
-      <h6>Average Rating: <span class="stars"> {{race.average}} </span></h6>
-       {# 
-        {% if {{race.average}} == 1 %} ✩
-        {% if {{race.average}} == 2 %} ✩✩
-        {% if {{race.average}} == 3 %}✩✩✩
-        {% if {{race.average}} == 4 %}✩✩✩✩
-        {% if {{race.average}} == 5 %}✩✩✩✩✩
-        {% endif %}
-        #}
-      <p>Location: {{race.location}}, {{race.state}} </p>
-      <p>Distance: {{race.distance}} miles </p>
-      <p>Elevation: {{race.elevation}} feet</p>
-      <p>Description: {{race.overview}}</p>
-      <p class="card-text"></p>
+
+                <h5>Write a review?</h5>
+                <div class="mb-9">
+                    <label for="exampleFormControlInput1" class="form-label">
+                        <textarea type="textarea" style="width: 300px" class="form-control" name="review" id="review" placeholder="Write a review for this race" required></textarea>
+                    </label>
+                </div>
+
+                <div class="mb-3">
+                    <input class ="review-btn" type="submit" value = "Submit">
+                </div>
+            </form>
+            <div class="review-heading"> 
+                {% endif %}
+                    <h4 >What others say about this race</h4>
+                    {% for review in race.reviews %}
+                    <p class="display-review">{{ review.review }}</p>    
+                {% endfor %}  
+            </div>
+        </div>
+        
     </div>
-  </div>
+    <div class="before-footer">
 
-  <h4>What others say about this race</h4>
-  {% for review in race.reviews %}
-      <p class="display-review">{{ review.review }}</p>    
-  
-  {% endfor %}  
-
-
-
-{% if session.get('user_email')%}
-
-{# 
-<form action="/races/{{race.race_id}}/like" method="POST">
-    <h5 class="add_like" name="like">Favorite this race? <button>&#10084;</button></h5>
-</form>
-#}
-
-<form action="/races/{{race.race_id}}/ratings" method="POST">
-
-<h5>Rate this race</h5>
-    <p>
-        Rating: 
-        <select name="rating" required>
-            <option value="">Select rating</option>
-            {% for num in range(1, 6) %}
-            <option value="{{num}}" >{{num}}</option>
-            {% endfor %}
-        </select>
-    </p>
-
-
-<h5>Write a review</h5>
-    <div class="mb-9" style="width: 200px;">
-        <label for="exampleFormControlInput1" class="form-label">
-            <input type="textarea" class="form-control" name="review" id="email" placeholder="Write a review for this race" required>
-        </label>
     </div>
-
-    <div class="mb-3">
-        <input class ="review-btn" type="submit" value = "Submit">
-    </div>
-</form>
-{% endif %}
-
+</div>
 {% endblock%}

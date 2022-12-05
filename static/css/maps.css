@@ -6,8 +6,10 @@
 }
 
 html, body {
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
+    position: relative;
+    min-height: 95vh;
     /* text-align: center; */
 }
 
@@ -32,6 +34,9 @@ html, body {
 
 /* ====HOMEPAGE====================================================== */
 
+.add-new-race{
+    padding-top: 40px;
+}
 
 .homepage-header{
   padding: 20px;
@@ -45,7 +50,7 @@ html, body {
 }
 
 .map{
-    height: 650px;
+    height: 600px;
 }
 
 .window-content{  
@@ -57,15 +62,26 @@ html, body {
     font-size: 15px;
 }
 
+.homepage-link{
+    display: flex;
+    justify-content: center;
+}
 
 /* ========================================================== */
-
+/* 
 .form-container{
     width: 350px;
     height: 200px;
     margin-left: 20px;
-}
+} */
 
+
+/*========Individual race page ============= */
+
+
+.review-heading{
+    margin-top: 50px;
+}
 
 /* ===Add a new bike race=================== */
 
@@ -131,6 +147,12 @@ html, body {
 
 
 /* ========INDEX PAGE=================== */
+
+
+.search-description{
+    font-weight: bold;
+}
+
 .display-all{
     display: flex;
     justify-content: flex-end;
@@ -165,13 +187,31 @@ html, body {
     margin: 10px;
 }
 
+/*=====PROFILE PAGE============================================== */
+.profile-header{
+    background-color: rgb(4, 191, 138)
+}
+
+.profile-bike{
+    display: flex;
+    justify-content: center;
+}
+
+/*====*/
+.before-footer{
+    margin: 20px;
+}
+
 
 /* =FOOTER=========================================================== */
 #footer{
-    position: fixed;
-    left: 0;
+    
+    position: absolute;
     bottom: 0;
+    left: 0;
+    right: 0;
     width: 100%;
+   
     text-align: center;
     z-index: -1;
 }
