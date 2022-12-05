@@ -108,7 +108,10 @@
        
             <div id="grid" >    
             {% for race in races %}
-                    <div class="card" >
+                    {# THIS IS WHY WE HAVE CONFLICTS B/C above, we added the same class/id for 
+                    a view, so we had to modify the search function
+                    #}
+                    {#<div class="card" >
                         <img class="card-img-top" src="{{race.img_url}}" alt="gravel bike race photo">
                         <div class="card-body">
                         <p class="card-text"></p>
@@ -119,7 +122,27 @@
                         <p>{{race.elevation}}ft</p>
                         </div>
                     </div>
-        
+        #}
+
+
+        <div class="card race-card " data-distance="{{race.distance}}" 
+        data-average="{{race.average}}" data-elevation="{{race.elevation}}" 
+        style="width: 50rem;"  > 
+            <div class = "row g-0">
+                <div class="col-md-4">
+                    <img class="img-fluid rounded-start horiz-card-photo" src="{{race.img_url}}" alt="gravel bike race photo">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title"> <a href="/races/{{race.race_id}}">
+                        {{race.race_name}}</a></h5>    
+                        <p class="card-text">{{race.location}}, {{race.state}} </p> 
+                        <p class="card-text">{{race.distance}}mi </p> 
+                        <p class="card-text">{{race.elevation}}ft </p> 
+                    </div>
+                </div>
+            </div>
+        </div>
             {% endfor %}
             </div>
         </div>

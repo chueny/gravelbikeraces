@@ -4,14 +4,14 @@ searches.forEach(search => search.addEventListener('click', removeHidden));
 function handleLinkClick() {
   document.getElementById("grid").hidden = true;
   document.getElementById("link").hidden = false; 
-  resetHiddenSearch(); 
+  resetHiddenSearch(); //hide cards 
 }
 
 function handleGridClick() {
   // console.log("inside handlegripclick");
-  document.getElementById("grid").hidden = false; 
+  document.getElementById("grid").hidden = false; //show all grids 
   document.getElementById("link").hidden = true;
-  resetHiddenSearch();
+  showAllSearch(); //display all cards
 }
 
 function resetHiddenSearch(){
@@ -21,6 +21,15 @@ function resetHiddenSearch(){
     card.hidden = true;
   }
 }
+
+function showAllSearch(){
+  //initializes all cards attributes hidden to true;
+  raceCards = document.querySelectorAll('.race-card');
+  for (const card of raceCards){
+    card.hidden = false;
+  }
+}
+
 
 function filterByAvg(value) {
   console.log(value)
@@ -89,8 +98,8 @@ function handleFilterButtonClick(type, value) {
       break;
     default: 
       //we want to display link all the time, remove grid cause it doesnt matter now
-      document.getElementById("grid").hidden = true;
-      document.getElementById("link").hidden = true;
+      document.getElementById("grid").hidden = false;
+      document.getElementById("link").hidden = false;
   }
 }
 
