@@ -83,6 +83,17 @@ html, body {
     margin-top: 50px;
 }
 
+.select-rating {
+    border-radius: 3px;
+}
+
+.display-review{
+    border: dotted;
+    border-radius: 15px;
+    border-width: thin;
+    padding: 5px;
+    padding-left: 10px;
+}
 /* ===Add a new bike race=================== */
 
 .add-race-background{

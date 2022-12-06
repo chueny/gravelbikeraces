@@ -60,6 +60,7 @@ class GravelTestsDatabse(TestCase):
    ## test failed login 
    ## test if account already exists via signup
 
+#good test case is to check for null. if null, then false test 
 #use the link below to do the tests 
 #https://fellowship.hackbrightacademy.com/materials/t4/exercises/testing-py/further-study.html
 #https://fellowship.hackbrightacademy.com/materials/t4/lectures/testing-2/
