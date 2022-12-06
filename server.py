@@ -20,7 +20,6 @@ geocode_key = os.environ['GEOCODE_KEY']
 @app.route('/')
 def homepage():
     """Show homepage""" 
-
     return render_template('homepage.html', MY_API_KEY = google_API)
 
 @app.route('/map')
@@ -62,30 +61,10 @@ def all_races():
 def show_race(race_id):
     """Show details on a race"""
     race = crud.get_race_by_id(race_id)
-    #this is becuase I removed the review.score
-    #avg = crud.star_avg(race_id)
-
-    # sum = 0
-    # len = 0
-    # for review in race.reviews:
-    #     sum += review.score
-    #     len += 1
-
-    # avg = int(sum/len)
-    # if avg == 1:
-    #     avg = "✩"
-    # elif avg == 2:
-    #     avg = "✩✩"
-    # elif avg == 3:
-    #     avg = "✩✩✩"
-    # elif avg == 4:
-    #     avg = "✩✩✩✩"
-    # else: 
-    #     avg = "✩✩✩✩✩"
-
-    # print(f"avg:{avg}")
-    
-    return render_template("race_details.html", race=race) #, avg=avg)
+    print("IN RACES/RACE_ID")
+    print(race)
+   
+    return render_template("race_details.html", race=race)
 
 
 @app.route('/users')
@@ -106,7 +85,7 @@ def show_users(user_id):
 @app.route('/login')
 def get_login_page():
 
-     return render_template("login.html")
+    return render_template("login.html")
 
 @app.route('/login', methods=["POST"])
 def login_user():
@@ -198,54 +177,31 @@ def create_rating(race_id):
     """Create a new rating and review for the race """
 
     logged_in_email = session.get('user_email')
-    add_rating = request.form.get('rating')
+    score = request.form.get('score')
     add_review = request.form.get('review')
     #date = datetime.now()
 
     if logged_in_email is None:
         flash("You must be log in to rate a race!")
-    elif not add_rating and not add_review:
+    elif not score and not add_review:
         flash("Error: you didn't select a score nor write a review.")
     else:
         user = crud.get_user_by_email(logged_in_email)
         race = crud.get_race_by_id(race_id)
 
-        review = crud.create_review(user, race, add_review)
+        review = crud.create_review(user, race, add_review, score)
         
         #commit avarage rating to database  first databse
         # race =  
-        update_rating = crud.update_rating(race_id)
+        # update_rating = crud.update_rating(race_id)
         db.session.add(review)
         db.session.commit()
         
     
-        flash(f"You rated {add_rating} out of 5 and wrote a review for this race!")
+        flash(f"You rated {score} out of 5 and wrote a review for this race!")
        
     return redirect(f"/races/{race_id}")
 
-# @app.route('/races/<race_id>/like', methods =["POST"])
-# def like_race(race_id):
-#     """Add a like/favorite for user and review for the race"""
-#     logged_in_email = session.get('user_email')
-#     #grab the like (+1)
-
-#     #add_rating = request.form.get('rating')
-#     favorite = request.form.get('like')
-#     print(favorite)
-#     #date = datetime.now()
-
-#     if logged_in_email is None:
-#         flash("You must be logged in to favorite a race!")
-#     else:
-#         user = crud.get_user_by_email(logged_in_email)
-#         race = crud.get_race_by_id(race_id)
-
-#         like = crud.create_like(user, race)
-
-#         db.session.add(like)
-#         db.session.commit()
-       
-#     return redirect(f"/races/{race_id}")
 
 @app.route('/add-race')
 def add_race(): 

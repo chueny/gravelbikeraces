@@ -36,7 +36,7 @@
                 <h5>Would you like to rate this race?</h5>
                 <p>
                     Rating: 
-                    <select name="rating" required>
+                    <select name="score" required>
                         <option value="">Select rating</option>
                         {% for num in range(1, 6) %}
                         <option value="{{num}}" >{{num}}</option>
@@ -46,19 +46,19 @@
 
 
                 <h5>Write a review?</h5>
-                <div class="mb-9">
+                <div class="col-sm">
                     <label for="exampleFormControlInput1" class="form-label">
                         <textarea type="textarea" style="width: 300px" class="form-control" name="review" id="review" placeholder="Write a review for this race" required></textarea>
                     </label>
                 </div>
 
-                <div class="mb-3">
+                <div class="col-sm">
                     <input class ="review-btn" type="submit" value = "Submit">
                 </div>
             </form>
             <div class="review-heading"> 
                 {% endif %}
-                    <h4 >What others say about this race</h4>
+                    <h4 >What others say </h4>
                     {% for review in race.reviews %}
                     <p class="display-review">{{ review.review }}</p>    
                 {% endfor %}  

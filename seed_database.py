@@ -61,7 +61,7 @@ for n in range(10):
         score = randint(1, 5)
         comment = "What an awesome race! The energy is unbelievable and the people are so nice!"
 
-        review = crud.create_review(user, random_race, comment)
+        review = crud.create_review(user, random_race, comment, score)
         model.db.session.add(review)
 
 model.db.session.commit()

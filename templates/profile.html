@@ -17,8 +17,9 @@
             <div class="col-md">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
-                        <h5 class="card-title"><span style="font-weight:bold">{{review.race.race_name}}</span></h5>
-                        <p class="your-review"><span style="font-weight:bold">Your rating</span>: {{ review.score}}</p>
+                        <h5 class="card-title"><span style="font-weight:bold"><a href="/races/{{review.race.race_id}}">
+                            {{review.race.race_name}}</a></span></h5>
+                        <p class="your-review race-average"><span style="font-weight:bold">Your rating</span>: {{ review.score}}</p>
                         <p class="your-review"><span style="font-weight:bold">Your review</span>: {{ review.review}}</p>
                     </div>
                 </div>  

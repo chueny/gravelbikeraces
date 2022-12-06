@@ -22,7 +22,7 @@ def get_user_by_email(email):
 
 def create_race(race_name, average,  distance, elevation, location, state, gps_lat, gps_lon, overview, img_url):
     """Create race and return a new race"""
-    
+
     race = Race(race_name = race_name, 
                 average=average, 
                 distance = distance, 
@@ -43,44 +43,43 @@ def get_race_by_id(race_id):
     """Return a race by id"""
 
     return Race.query.get(race_id)
-def update_race_rating(rating):
-    """Adds a new rating into the database"""
-    race = Race.query.filter_by(race_id)
+
+# def update_race_rating(rating):
+#     """Adds a new rating into the database"""
+#     race = Race.query.filter_by(race_id)
     
 
-def update_rating(race_id):
+def get_average_rating(race_id):
     """" Take new rating and add to the race.averages and compute new ratings """
     #How do we add the new rating/score to the exitings race.average??
-    current_rating = Race.query.filter_by(race_id=race_id).all() 
-    length = len(current_rating)
+    race = Race.query.filter_by(race_id=race_id)
+    ratings = race.average
+    count_ratings = len(ratings)
     total_rating = 0
 
-    for race_entry in current_rating:
-        total_rating = total_rating + race_entry.average
+    for rating in ratings:
+        total_rating += int(rating.average)
         
-    avg = (total_rating)/(length)
-
-    # new_avg_rating = (current_rating + rating) / length 
-    race = Race.query.filter_by(race_id=race_id)
-    race.averge = avg 
-    db.session.commit()
+    if count_ratings ==0:
+        return 'No ratings'
+    else:
+        return f'{(total_rating/count_ratings)}'
 
 
-def create_review(user, race, review):
+def create_review(user, race, review, score):
     """Create and return a race review"""
    
-    return Review(user=user, race=race, review = review)
+    return Review(user=user, race=race, review = review, score = score)
 
 def get_all_reviews():
     """Get reviews by id"""
 
     return Review.query.all()
 
-#AM I EVEN USING THIS?
-# def update_score(review_id, new_score):
-#     """Create and return a race score"""
-#     score = Review.query.get(review_id)
-#     review.score = new_score
+def update_score(review_id, new_score):
+    """Create and return a race score"""
+    score = Review.query.get(review_id)
+    review.score = new_score
 
 
 def star_avg(race_id): # race_id or review_id
