@@ -50,20 +50,20 @@ def get_race_by_id(race_id):
     
 
 def get_average_rating(race_id):
-    """" Take new rating and add to the race.averages and compute new ratings """
+    """" Take new rating and add to the review.score, compute new average, and insert into race.avg """
     #How do we add the new rating/score to the exitings race.average??
-    race = Race.query.filter_by(race_id=race_id)
-    ratings = race.average
-    count_ratings = len(ratings)
-    total_rating = 0
-
-    for rating in ratings:
-        total_rating += int(rating.average)
-        
-    if count_ratings ==0:
-        return 'No ratings'
-    else:
-        return f'{(total_rating/count_ratings)}'
+    race = Race.query.filter_by(race_id=race_id).first()
+    reviews = Review.query.filter_by(race_id = race_id).all()
+    
+    total_scores = 0
+    count = 0
+    for review in reviews:
+        total_scores += review.score 
+        count += 1
+    
+    avg = total_scores/count
+    return avg 
+  
 
 
 def create_review(user, race, review, score):
@@ -91,7 +91,6 @@ def add_review(reivew_id, date, new_review):
     """Create and return a race review """
     review = Review.query.get(review_id)
     review.score = new_review
-    
     
 def create_like(user_id, race_id):
     """Like a race"""

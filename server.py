@@ -190,13 +190,13 @@ def create_rating(race_id):
         race = crud.get_race_by_id(race_id)
 
         review = crud.create_review(user, race, add_review, score)
-        
-        #commit avarage rating to database  first databse
-        # race =  
-        # update_rating = crud.update_rating(race_id)
         db.session.add(review)
         db.session.commit()
-        
+        update_rating = crud.get_average_rating(race_id)
+        race.average = update_rating
+
+        db.session.add(race)
+        db.session.commit()
     
         flash(f"You rated {score} out of 5 and wrote a review for this race!")
        
