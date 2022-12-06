@@ -14,14 +14,7 @@
             <div class="card-body">
             <h5 class="card-title">{{race.race_name}}</h5>
             <h6>Average Rating: <span class="stars"> {{race.average}} </span></h6>
-            {# 
-                {% if {{race.average}} == 1 %} ✩
-                {% if {{race.average}} == 2 %} ✩✩
-                {% if {{race.average}} == 3 %}✩✩✩
-                {% if {{race.average}} == 4 %}✩✩✩✩
-                {% if {{race.average}} == 5 %}✩✩✩✩✩
-                {% endif %}
-                #}
+          
             <p>Location: {{race.location}}, {{race.state}} </p>
             <p>Distance: {{race.distance}} miles </p>
             <p>Elevation: {{race.elevation}} feet</p>
@@ -60,7 +53,7 @@
                 {% endif %}
                     <h4 >What others say </h4>
                     {% for review in race.reviews %}
-                    <p class="display-review">{{ review.review }}</p>    
+                    <p class="display-review">{{ review.review }} </p>    
                 {% endfor %}  
             </div>
         </div>

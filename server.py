@@ -62,7 +62,7 @@ def show_race(race_id):
     """Show details on a race"""
     race = crud.get_race_by_id(race_id)
     print("IN RACES/RACE_ID")
-    print(race)
+    print(race.average)
    
     return render_template("race_details.html", race=race)
 
@@ -221,8 +221,8 @@ def fetch_gelocation(): #do we need a userId?
     """Create a new race and adds it to the database"""
 
     race_name = request.form.get('race')
-    average = request.form.get('rating')
-    print(f"average")
+    # average = request.form.get('rating')
+    # print(f"average")
     distance = request.form.get('distance')
     elevation = request.form.get('elevation')
     location = request.form.get('city')
@@ -245,7 +245,7 @@ def fetch_gelocation(): #do we need a userId?
         flash(""" Location not valid. Try entering another city and state. """)
     
     race = crud.create_race(race_name = race_name, 
-                            average = average,
+                            # average = average,
                             distance = distance, 
                             elevation= elevation, 
                             location = location, 

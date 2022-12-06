@@ -22,6 +22,8 @@ races_in_db = []
 for race in race_data:
     race_name = race['race_name']
     average = race['average']
+    if average == 0:
+        average = None   
     distance = race['distance']
     elevation = race['elevation']
     location = race['location']
@@ -58,11 +60,16 @@ for n in range(10):
 
     for _ in range(10):
         random_race=choice(races_in_db)
+        print(random_race)
         score = randint(1, 5)
-        comment = "What an awesome race! The energy is unbelievable and the people are so nice!"
+        comment = "The energy is unbelievable and the people are so nice! The course is challenging."
 
         review = crud.create_review(user, random_race, comment, score)
         model.db.session.add(review)
+
+        update_rating = crud.get_average_rating(random_race.race_id)
+        random_race.average = update_rating
+        model.db.session.add(random_race)
 
 model.db.session.commit()
     

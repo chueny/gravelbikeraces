@@ -2,7 +2,7 @@
   {
     "race_name": "Little Sip Course",
     "organizer": "Rooted Vermont",
-    "average": 5,
+    "average": 0,
     "distance": 48,
     "elevation": 4000, 
     "location": "Richmond",
@@ -16,7 +16,7 @@
   {
     "race_name": "Sip of Sunshine Course",
     "organizer": "Rooted Vermont",
-    "average": 4,
+    "average": 0,
     "distance": 86,
     "elevation": 8000, 
     "location": "Richmond",
@@ -30,7 +30,7 @@
   {
     "race_name": "Smith Optics 'Thriller'",
     "organizer": "Barry-Roubaix",
-    "average": 3,
+    "average": 0,
     "distance": 36,
     "elevation": 2200,
     "location": "Hasting",
@@ -44,7 +44,7 @@
   {
     "race_name": "SRAM 'Killer'",
     "organizer": "Barry-Roubaix",
-    "average": 2,
+    "average": 0,
     "distance": 62,
     "elevation": 3800,
     "location": "Hasting",
@@ -58,7 +58,7 @@
   {
     "race_name": "Panaracer 'Psycho Killer'",
     "organizer": "Barry-Roubaix",
-    "average": 1,
+    "average": 0,
     "distance": 100,
     "elevation": 6800,
     "location": "Hasting",
@@ -72,7 +72,7 @@
   {
     "race_name": "Hell of the North" ,
     "organizer":"Belgium Waffle",
-    "average": 1,
+    "average": 0,
     "distance":144,
     "elevation": 12001 ,
     "location": "Asheville",
@@ -86,7 +86,7 @@
   {
     "race_name": "Hell of the South" ,
     "organizer":"Belgium Waffle",
-    "average": 2,
+    "average": 0,
     "distance":136,
     "elevation": 5000,
     "location": "CedarCity",
@@ -100,7 +100,7 @@
   {
     "race_name": "The Original Hell of the North" ,
     "organizer":"Belgium Waffle",
-    "average": 3,
+    "average": 0,
     "distance":138,
     "elevation": 12000,
     "location": "Asheville",
@@ -114,7 +114,7 @@
   {
     "race_name":"Crusher in the Tusher",
     "organizer":"Crusher in the Tusher",
-    "average": 4,
+    "average": 0,
     "distance": 70,
     "elevation": 9850,
     "location": "Cedar City",
@@ -128,7 +128,7 @@
   {
     "race_name": "Baked Potato",
     "organizer": "Rebecca's Private Idaho",
-    "average":5,
+    "average":0,
     "distance": 103,
     "elevation": 6271,
     "location": "Sun Valley",
@@ -142,7 +142,7 @@
   {
     "race_name": "French Fry",
     "organizer": "Rebecca's Private Idaho",
-    "average": 5,
+    "average": 0,
     "distance": 56,
     "elevation": 4386,
     "location": "Sun Valley",
@@ -156,7 +156,7 @@
   {
     "race_name": "Tater Tot",
     "organizer": "Rebecca's Private Idaho",
-    "average": 4,
+    "average": 0,
     "distance": 18.76,
     "elevation": 1473,
     "location": "Sun Valley",
@@ -184,7 +184,7 @@
   {
     "race_name": "Blue Course",
     "organizer": "SBT Gravel",
-    "average": 2,
+    "average": 0,
     "distance": 100,
     "elevation": 6000,
     "location": "Steamboat",
@@ -198,7 +198,7 @@
   {
     "race_name": "Red Course",
     "organizer": "SBT Gravel",
-    "average": 1,
+    "average": 0,
     "distance": 60,
     "elevation": 3600,
     "location": "Steamboat",
@@ -212,7 +212,7 @@
   {
     "race_name": "Green Course",
     "organizer": "SBT Gravel",
-    "average": 1,
+    "average": 0,
     "distance": 37,
     "elevation": 2000,
     "location": "Steamboat",
@@ -226,7 +226,7 @@
   {
     "race_name": "unPAved of the Susquehanna River Valley",
     "organizer": "unPAved",
-    "average": 2,
+    "average": 0,
     "distance": 130,
     "elevation": 9442,
     "location": "Lewisburg",
@@ -240,7 +240,7 @@
   {
     "race_name": "The MidSouth - 100 Mile",
     "organizer": "The MidSouth",
-    "average":3 ,
+    "average":0,
     "distance": 102,
     "elevation": 5190,
     "location": "Stillwater",
@@ -254,7 +254,7 @@
   {
     "race_name": "50 Mile",
     "organizer": "The MidSouth",
-    "average": 4,
+    "average": 0,
     "distance":56.6 ,
     "elevation": 2740,
     "location": "Stillwater",
@@ -268,7 +268,7 @@
   {
     "race_name": "Grinduro",
     "organizer": "Giro",
-    "average": 5,
+    "average": 0,
     "distance": 60,
     "elevation": 8500,
     "location": "Mt. Shasta",
@@ -282,7 +282,7 @@
   {
     "race_name":"The Big Sugar" ,
     "organizer": "The Big Sugar",
-    "average": 5,
+    "average": 0,
     "distance": 107,
     "elevation": 7000,
     "location": "Bentonville",
@@ -296,7 +296,7 @@
   {
     "race_name":"Lil' Sugar" ,
     "organizer": "The Big Sugar",
-    "average": 4,
+    "average": 0,
     "distance": 52,
     "elevation": 3500,
     "location": "Bentonville",
@@ -310,7 +310,7 @@
   {
     "race_name":"Heck of the North 105" ,
     "organizer": "Heck of the North",
-    "average":3 ,
+    "average":0,
     "distance": 105,
     "elevation": 3434,
     "location": "Two Harbor",
@@ -324,7 +324,7 @@
   {
     "race_name":"Heck of the North 20" ,
     "organizer": "Heck of the North",
-    "average": 2,
+    "average": 0,
     "distance": 20,
     "elevation": 504,
     "location": "Two Harbor",
@@ -338,7 +338,7 @@
   {
     "race_name":"Heck of the North 55" ,
     "organizer": "Heck of the North",
-    "average": 1,
+    "average": 0,
     "distance": 55,
     "elevation": 1000,
     "location": "Two Harbor",
@@ -352,7 +352,7 @@
   {
     "race_name":"Unbound - 50 Miles" ,
     "organizer": "Unbound",
-    "average": 1,
+    "average": 0,
     "distance": 50,
     "elevation": 1000,
     "location": "Emporia",
@@ -380,7 +380,7 @@
   {
     "race_name":"Gravel Locos - GL60 La Mediana",
     "organizer": "Gravel Locos",
-    "average": 3,
+    "average": 0,
     "distance": 69,
     "elevation": 3516,
     "location": "Hico",
@@ -394,7 +394,7 @@
   {
     "race_name":"Gravel LOcos - GL100",
     "organizer": "Gravel Locos",
-    "average": 4,
+    "average": 0,
     "distance": 110.2,
     "elevation": 5024,
     "location": "Hico",
@@ -408,7 +408,7 @@
   {
     "race_name":"Gravel Locos - GL 150",
     "organizer": "Gravel Locos",
-    "average": 5,
+    "average": 0,
     "distance": 155.8,
     "elevation": 6614,
     "location": "Hico",
@@ -422,7 +422,7 @@
   {
     "race_name":"Bighorn - Gravel Curious",
     "organizer": "The Bighorn",
-    "average": 4,
+    "average": 0,
     "distance": 20,
     "elevation": 480,
     "location": "Gypsum",

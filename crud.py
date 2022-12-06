@@ -20,7 +20,7 @@ def get_user_by_email(email):
     """Return user by email"""
     return User.query.filter(User.email == email).first()
 
-def create_race(race_name, average,  distance, elevation, location, state, gps_lat, gps_lon, overview, img_url):
+def create_race(race_name, average, distance, elevation, location, state, gps_lat, gps_lon, overview, img_url):
     """Create race and return a new race"""
 
     race = Race(race_name = race_name, 
@@ -62,9 +62,12 @@ def get_average_rating(race_id):
         count += 1
     
     avg = total_scores/count
-    return avg 
-  
 
+    if count == 0:
+        return '0'
+    else:
+        return avg 
+  
 
 def create_review(user, race, review, score):
     """Create and return a race review"""

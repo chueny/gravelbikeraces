@@ -12,7 +12,7 @@
       <label for="race_name">Name:</label>
       <input type="text" class="form-control" placeholder="name of gravel race" name="race" required>
     </div>
-    <div class="form-group">
+    {#<div class="form-group">
         <label for="race_miles">How would you rate this race: </label>
             <select name="rating" clas="select_rating" required>
                 <option value="" class="select_rating">Select rating</option>
@@ -20,7 +20,7 @@
                 <option value="{{num}}">{{num}}</option>
                 {% endfor %}
             </select>
-    </div>
+    </div>#}
     <div class="form-group">
       <label for="race_miles">Miles: </label>
       <input type="number" class="form-control" placeholder="miles" name="distance" required>
