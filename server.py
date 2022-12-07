@@ -109,6 +109,14 @@ def login_user():
 
     return redirect("/profile") ## REDIRECT TO PROFILE 
 
+@app.route('/logout')
+def logout_user():
+    """Logout of a user account"""
+    session.pop('user.email', None)
+    session.clear()
+    return redirect('/login')
+
+
 @app.route('/profile')
 def show_profile_page():
     """Shows a user's profile page."""
@@ -119,12 +127,20 @@ def show_profile_page():
     #class 
     #logged_in_email 
     #USE try, except, else, finally to handle errors 
-    if user is None:
-        flash("You must be log in to rate a race!")
-        redirect ('/login')
+    # logged_in_email = session.get('user_email')
+    
+    if logged_in_email is None:
+        flash("You must be logged in to create a new race!")
+        return redirect("/login")
     else:
         return render_template("profile.html", user=user)
+    # else: 
+    #     return render_template("add_race.html")
 
+    # if user is None:
+    #     flash("You must be log in to rate a race!")
+    #     redirect ('/login')
+    
 
 @app.route('/signup')
 def show_login_page():
