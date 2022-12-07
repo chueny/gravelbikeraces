@@ -19,7 +19,8 @@ geocode_key = os.environ['GEOCODE_KEY']
 
 @app.route('/')
 def homepage():
-    """Show homepage""" 
+    """Show homepage"""
+
     return render_template('homepage.html', MY_API_KEY = google_API)
 
 @app.route('/map')
@@ -29,7 +30,8 @@ def show_map():
     
     races =[]
 
-    #dict_races outside, means the keys are unique and the values get replace each time
+    #dict_races outside, means the keys are unique and 
+    #the values get replace each time
     for race in all_races:
         dict_races = {} #new dict each time
         dict_races['race_id'] = race.race_id
@@ -61,8 +63,6 @@ def all_races():
 def show_race(race_id):
     """Show details on a race"""
     race = crud.get_race_by_id(race_id)
-    print("IN RACES/RACE_ID")
-    print(race.average)
    
     return render_template("race_details.html", race=race)
 
@@ -70,7 +70,9 @@ def show_race(race_id):
 @app.route('/users')
 def all_users():
     """Shows all users"""
+    
     users = crud.get_all_users()
+
     return render_template("users.html", users = users) 
 
 
@@ -90,6 +92,7 @@ def get_login_page():
 @app.route('/login', methods=["POST"])
 def login_user():
     """Login to a user account"""
+
     name = request.form.get("name")
     email = request.form.get("email")
     password = request.form.get("password")
@@ -97,7 +100,6 @@ def login_user():
     user = crud.get_user_by_email(email)
     if not user:
         flash("Please sign up for an account!")
-        # print(f"YOU ARE NOT A USER")
         return redirect("/signup")
     if user.password != password:
         flash("The passward you entered was incorrect!")
@@ -121,12 +123,8 @@ def logout_user():
 def show_profile_page():
     """Shows a user's profile page."""
     logged_in_email = session.get('user_email')
-    # user = session.get('user')
-    print(logged_in_email)
+    
     user = crud.get_user_by_email(logged_in_email)
-    #class 
-    #logged_in_email 
-    #USE try, except, else, finally to handle errors 
     # logged_in_email = session.get('user_email')
     
     if logged_in_email is None:
@@ -134,9 +132,6 @@ def show_profile_page():
         return redirect("/login")
     else:
         return render_template("profile.html", user=user)
-    # else: 
-    #     return render_template("add_race.html")
-
     # if user is None:
     #     flash("You must be log in to rate a race!")
     #     redirect ('/login')
@@ -159,33 +154,13 @@ def signup_user():
 
     if user:
         flash("You already have an account. Please try loggin in.")
-        # print(f"USER EXITS??")
     else:
         user = crud.create_user(name, email, password)
         db.session.add(user)
         db.session.commit()
         flash("Account created. Please log in.")
-        # print(f"CREATE USER???")
 
     return redirect("/login")
-
-
-#We do weant to create a route for users and what they reviewed or atesd
-@app.route('/update_rating', methods = ["POST"])
-def update_score():
-    
-    review_id = request.json["review_id"]
-    updated_score = request.JSON["updated_score"]
-    crud.update_score(review_id, updated_score)
-    
-
-    new_review = request.form.get('review')
-    # date = datetime.now()
-    print(date)
-    crud.add_review(review_id, new_review)
-    db.session.commit()
-
-    return "Success"
 
 
 @app.route('/races/<race_id>/ratings', methods =["POST"])
@@ -221,8 +196,8 @@ def create_rating(race_id):
 
 @app.route('/add-race')
 def add_race(): 
-    """"""
-    #NOT SURE THIS IS WORKING PROPERLY THERE ARE BUGS 
+    """Users may add a race to the database."""
+
     logged_in_email = session.get('user_email')
     
     if logged_in_email is None:
@@ -237,8 +212,7 @@ def fetch_gelocation(): #do we need a userId?
     """Create a new race and adds it to the database"""
 
     race_name = request.form.get('race')
-    # average = request.form.get('rating')
-    # print(f"average")
+    
     distance = request.form.get('distance')
     elevation = request.form.get('elevation')
     location = request.form.get('city')

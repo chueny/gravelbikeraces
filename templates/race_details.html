@@ -13,18 +13,19 @@
             <img class="card-img-top" src="{{race.img_url}}" alt="picture of gravel biking">
             <div class="card-body">
             <h5 class="card-title">{{race.race_name}}</h5>
-            <h6>Average Rating: <span class="stars"> {{race.average}} </span></h6>
+            <p class="race-details-bold"><strong> Rating:</strong> {{race.average}}</p>
           
-            <p>Location: {{race.location}}, {{race.state}} </p>
-            <p>Distance: {{race.distance}} miles </p>
-            <p>Elevation: {{race.elevation}} feet</p>
-            <p>Description: {{race.overview}}</p>
+            <p class="race-details-bold"><strong>Location:</strong> {{race.location}}, {{race.state}} </p>
+            <p class="race-details-bold"><strong>Distance:</strong> {{race.distance}} miles </p>
+            <p class="race-details-bold"><strong>Elevation:</strong> {{race.elevation}} feet</p>
+            <p class="race-details-bold"><strong>Description:</strong> {{race.overview}}</p>
             <p class="card-text"></p>
             </div>
             </div>
         </div>
-    {% if session.get('user_email')%}
         <div class = "col-sm">
+        {% if session.get('user_email')%}
+      
             <form action="/races/{{race.race_id}}/ratings" method="POST">
                 <h5>Would you like to rate this race?</h5>
                 <p>
@@ -52,6 +53,7 @@
             <div class="review-heading"> 
                 {% endif %}
                     <h4 >What others say </h4>
+                    
                     {% for review in race.reviews %}
                     <p class="display-review">{{ review.review }} ~{{review.user.name}}</p>    
                 {% endfor %}  
