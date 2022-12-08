@@ -2,25 +2,29 @@
 {% block title %} Login {% endblock %}
 
 {% block content %}
-<div class="login-background"> 
-<div class="login-container">
+<div class="signup-background ">
+    <div class="signup-container col">
+    
+    <div class="row justify-content-center">
 
     <form action="/login" method="POST" class="needs-validation" >
-        <h1 class="alice">Login</h1>
-        <div class="mb-3 alice">
-            <label for="exampleFormControlInput1" class="form-label">Email
+        {#alice used to make the font black#}
+        <h2 class="">Login</h2>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address
                 <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
             </label>
         </div>
-        <div class="mb-3 alice">
-            <label for="exampleFormControlTextarea1" class="form-label">Pasword
+        <div class="mb-3 ">
+            <label for="exampleFormControlTextarea1" class="form-label">Password
                 <input type="password" class="form-control" name="password" id="password" rows="3" required>
             </label>
         </div>
         <div class="mb-3">
-            <button>Submit</button>
+            <button class="login-signup">Login</button>
         </div>
     </form>
+    </div>
 </div>
 </div>
 {% endblock %}

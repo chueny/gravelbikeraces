@@ -2,19 +2,19 @@
 {% block title%} Signup {% endblock%}
 
 {% block content %}
-<div class="signup-background">
-<div class="signup-container">
+<div class="signup-background ">
+<div class="signup-container ">
 
-
-<form action="/signup" method="POST">
-    <h1 class="alice">Signup </h1>
+<div class="row justify-content-center">
+<form action="/signup" method="POST" class="needs-validation">
+    <h2 class="alice">Signup </h2>
     <div class="mb-3 alice">
         <label for="exampleFormControlInput1" class="form-label">Name
             <input type="text" class="form-control" name= "name" id="email" placeholder="name" required>
         </label>
     </div>
     <div class="mb-3 alice">
-        <label for="exampleFormControlInput1" class="form-label">Email
+        <label for="exampleFormControlInput1" class="form-label">Email address
             <input type="email" class="form-control" name= "email" id="email" placeholder="name@example.com" required>
         </label>
     </div>
@@ -25,9 +25,10 @@
    
         </div>
     <div class="mb-3">
-    <button>Submit</button>
+    <button class="login-signup">Signup</button>
     </div>
 </form>
+</div>
 </div>
 </div>
 

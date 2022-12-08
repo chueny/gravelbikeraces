@@ -4,6 +4,7 @@
     {% block head %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/maps.css"/>
@@ -13,18 +14,20 @@
     {% endblock %}
     <nav>
       <div class="navigation-container">
-        <div class="row"> 
-          <div class = "col "><h1>Gravel Bike Races</h1></div>
-          <div class = "col  nav-link">
-            <a class="nav-link" href="/">Home</a>
-            <a class="nav-link" href="/races"> Find</a>
+        <div class="row p-0 m-0"> 
+          <div class = "col nav-tittle">
+            <h1 id="title-gravel">GRAVEL BIKE RACES</h1>
+          </div>
+          <div class = "col nav-link">
+            <a class="nav-link home" href="/">Home</a>
+            <a class="nav-link find" href="/races"> Find</a>
             {% if session.get('user_email')%}
-            <a class="nav-link" href="/profile"> Profile </a>
-            <a class="nav-link" href="/add-race"> Add </a>  
-            <a class="nav-link" href="/logout"> Logout </a>
+            <a class="nav-link profile" href="/profile"> Profile </a>
+            <a class="nav-link add" href="/add-race"> Add </a>  
+            <a class="nav-link logout" href="/logout"> Logout </a>
             {% else %} 
-            <a class="nav-link" href="/login"> Login </a> 
-            <a class="nav-link" href="/signup"> Signup </a>
+            <a class="nav-link login" href="/login"> Login </a> 
+            <a class="nav-link signup" href="/signup"> Signup </a>
             {% endif %}
           </div>
         </div>

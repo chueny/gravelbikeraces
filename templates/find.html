@@ -11,8 +11,8 @@
 </script>
 #}
 
-<div class="container">
-    <div class="row">
+<div class ="col">
+    <div class="row justify-content-center">
         <div class="col-3 search-by-specific">
                 <h4 class="search-by"> Search by</h4>
                 
@@ -85,7 +85,7 @@
                 
                 <div class="card race-card " data-distance="{{race.distance}}" 
                 data-average="{{race.average}}" data-elevation="{{race.elevation}}" 
-                style="width: 50rem;"  hidden> 
+                hidden> 
                     <div class = "row g-0">
                         <div class="col-md-4">
                             <img class="img-fluid rounded-start horiz-card-photo" src="{{race.img_url}}" alt="gravel bike race photo">
@@ -127,9 +127,9 @@
 
         <div class="card race-card " data-distance="{{race.distance}}" 
         data-average="{{race.average}}" data-elevation="{{race.elevation}}" 
-        style="width: 50rem;"  > 
+         > 
             <div class = "row g-0">
-                <div class="col-md-4">
+                <div class="col-md-4 img-parent">
                     <img class="img-fluid rounded-start horiz-card-photo" src="{{race.img_url}}" alt="gravel bike race photo">
                 </div>
                 <div class="col-md-8">
