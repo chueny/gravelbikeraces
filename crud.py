@@ -20,11 +20,11 @@ def get_user_by_email(email):
     """Return user by email"""
     return User.query.filter(User.email == email).first()
 
-def create_race(race_name, average, distance, elevation, location, state, gps_lat, gps_lon, overview, img_url):
+def create_race(race_name, distance, elevation, location, state, gps_lat, gps_lon, overview, img_url):
     """Create race and return a new race"""
 
     race = Race(race_name = race_name, 
-                average=average, 
+                # average=average, 
                 distance = distance, 
                 elevation= elevation, 
                 location = location, 

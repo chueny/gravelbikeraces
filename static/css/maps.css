@@ -44,7 +44,24 @@ html, body {
   justify-content: center;
 }
 
+
+/* .homepage-container{
+    background-image: url(https://ridewithgps.com/photos/13088399/large.jpg);
+    height: 900px;
+    width: auto;
+    background-size: cover;
+    color:aliceblue;
+
+} */
+
+.homepage-photo{
+    opacity: .75;
+    margin-bottom: 40px;
+}
+
+
 .map, #map {
+   
     width: 100%;
     height: 75%;
 }
@@ -110,6 +127,7 @@ html, body {
 
 
 }
+
 .add-race-container{
     padding-top: 50px;
     display: flex;
