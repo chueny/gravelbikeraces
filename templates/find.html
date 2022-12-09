@@ -66,7 +66,7 @@
                                 {% for race in races %}
                                 <tr>
                                     
-                                    <td><a href="/races/{{race.race_id}}">
+                                    <td><a class ="card-title" href="/races/{{race.race_id}}">
                                         {{race.race_name}}</a></td>
                                     <td>{{race.average}}</td>
                                     <td>{{race.location}}, {{race.state}}</td>
@@ -94,7 +94,7 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title"> <a href="/races/{{race.race_id}}">
+                                <h5 class="card-title"> <a  class ="card-title" href="/races/{{race.race_id}}">
                                 {{race.race_name}}</a></h5>    
                                 <p class="race-average">{{race.average}}</p> 
                                 <p class="card-text">{{race.distance}}mi </p> 
@@ -116,7 +116,7 @@
                         <img class="card-img-top" src="{{race.img_url}}" alt="gravel bike race photo">
                         <div class="card-body">
                         <p class="card-text"></p>
-                        <a href="/races/{{race.race_id}}">
+                        <a class ="card-title"  href="/races/{{race.race_id}}">
                             {{race.race_name}}</a>
                         <p class="race-average">{{race.average}}</p> 
                         <p>{{race.distance}}mi</p>
@@ -132,7 +132,7 @@
          > 
             <div class = "row g-0">
                 <div class="col-md-4 img-parent">
-                    <a href="/races/{{race.race_id}}">
+                    <a class ="card-title" href="/races/{{race.race_id}}">
                     <img class="img-fluid rounded-start horiz-card-photo" src="{{race.img_url}}" alt="gravel bike race photo">
                     </a>
                 </div>

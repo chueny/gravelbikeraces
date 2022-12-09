@@ -148,6 +148,13 @@ html, body {
 
 .btn-homepage{
     margin-bottom: .5rem;
+    border-radius: 8px;
+    background-color:rgb(4, 191, 138);
+    opacity: .75;
+    width: 100%;
+    border: 1px solid transparent;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
 }
 
 /* ========================================================== */
@@ -178,7 +185,22 @@ html, body {
 }
 
 .select-rating {
-    border-radius: 3px;
+   
+    margin-bottom: .5rem;
+    border-radius: 8px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    /* background-color:rgb(4, 191, 138); */
+    /* opacity: .75; */
+    /* width: 100%; */
+    /* border: 1px solid transparent; */
+    
+}
+
+.find-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    
 }
 
 .display-review{
@@ -335,8 +357,17 @@ html, body {
     display: flex;
     flex-flow: column wrap;
 }
-.card-title, .search {
-    font-family: caveat;
+.card-title {
+    font-family: Caveat;
+    font-size: 2rem;
+}
+
+a {
+    color: rgb(4, 191, 138);
+}
+.search {
+    font-family: Caveat;
+
 }
 .card{
     margin: 10px;

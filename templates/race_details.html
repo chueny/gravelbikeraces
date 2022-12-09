@@ -10,9 +10,13 @@
     <div class = "row">
         <div class = "col-sm ">
             <div class="card">
-            <img class="card-img-top" src="{{race.img_url}}" alt="picture of gravel biking">
-            <div class="card-body">
-            <h5 class="card-title">{{race.race_name}}</h5>
+
+                    <img class="card-img-top" src="{{race.img_url}}" alt="picture of gravel biking">
+                  
+                    <div class="card-body">
+            
+           <h5 class="card-title"><a class ="card-title" href="/races/{{race.race_id}}">{{race.race_name}}</a></h5> 
+           
             <p class="race-details-bold"><strong> Rating:</strong> {{race.average}}</p>
           
             <p class="race-details-bold"><strong>Location:</strong> {{race.location}}, {{race.state}} </p>
@@ -27,7 +31,7 @@
         {% if session.get('user_email')%}
       
             <form action="/races/{{race.race_id}}/ratings" method="POST">
-                <h5>Would you like to rate this race?</h5>
+                <h5 class="find-title">Would you like to rate this race?</h5>
                 <p>
                     Rating: 
                     <select class="select-rating" name="score" required>
@@ -39,23 +43,22 @@
                 </p>
 
 
-                <h5>Write a review?</h5>
+                <h5 class="find-title ">Write a review?</h5>
                 <div class="col-sm">
                     <label for="exampleFormControlInput1" class="form-label">
-                        <textarea type="textarea" style="width: 300px" class="form-control" name="review" id="review" placeholder="Write a review for this race" required></textarea>
+                        <textarea type="textarea" class="form-control select-rating" name="review" id="review" placeholder="Write a review for this race" required></textarea>
                     </label>
+                    <input class ="btn-homepage" type="submit" value = "Submit">
                 </div>
-
-                <div class="col-sm">
-                    <input class ="review-btn" type="submit" value = "Submit">
-                </div>
+ 
+            
             </form>
             <div class="review-heading"> 
                 {% endif %}
-                    <h4 >What others say </h4>
+                    <h5 class="find-title" >What others say </h5>
                     
                     {% for review in race.reviews %}
-                    <p class="display-review">{{ review.review }} ~{{review.user.name}}</p>    
+                    <p class="col-sm display-review">{{ review.review }} ~{{review.user.name}}</p>    
                 {% endfor %}  
             </div>
         </div>
