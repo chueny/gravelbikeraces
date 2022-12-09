@@ -10,6 +10,7 @@ html, body {
     padding: 0;
     font-family: 'Oswald', sans-serif;
     font-weight: 300;
+    background-color: #FFFAFA;
     /* position: relative;
     min-height: 95vh; */
     
@@ -157,6 +158,13 @@ html, body {
     font-weight: 200;
 }
 
+.btn-homepage:hover{
+    /* margin-bottom: .5rem;
+    border-radius: 8px; */
+    background-color:rgb(12, 241, 176);
+  
+}
+
 /* ========================================================== */
 /* 
 .form-container{
@@ -190,6 +198,7 @@ html, body {
     border-radius: 8px;
     font-family: 'Oswald', sans-serif;
     font-weight: 300;
+    border: 1px solid #ced4da;
     /* background-color:rgb(4, 191, 138); */
     /* opacity: .75; */
     /* width: 100%; */
@@ -204,17 +213,34 @@ html, body {
 }
 
 .display-review{
-    border: dotted;
-    border-radius: 15px;
-    border-width: thin;
+    border: 1px solid #ced4da;
     padding: 5px;
     padding-left: 10px;
+    margin-bottom: .5rem;
+    border-radius: 8px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
 }
 
 /* .race-details-bold{
     font-weight: bold;
 
 } */
+
+
+.rating-one:hover, .rating-two:hover, .rating-three:hover, 
+.rating-four:hover, .rating-five:hover, .twenty_five:hover, 
+.fifty:hover, .seventy_five:hover, .hundred:hover, .hundred_plus:hover,
+.under_five_hun:hover, .five_one:hover, .one_one:hover, .two_one:hover,
+.three_one:hover, .four_plus:hover, .grid-all:hover, .link-all:hover{
+    border: 1px solid transparent;
+    background-color:rgb(12, 241, 176, .50);
+}
+
+
+
+
+
 
 /* ========================================================== */
 .login-background{
@@ -260,7 +286,9 @@ html, body {
     font-family: 'Oswald', sans-serif;
     font-weight: 200;
 }
-
+.login-signup:hover{
+    opacity: .75;
+}
 /*
 
 /* ===Add a new bike race=================== */
@@ -347,7 +375,7 @@ html, body {
 
 .search{
     border-radius: 5px;
-    border: solid;
+    border: 1px solid #ced4da;
     border-width: 1px;
     background-color: white;
     margin: 1px;
@@ -360,8 +388,12 @@ html, body {
 .card-title {
     font-family: Caveat;
     font-size: 2rem;
+    color:rgb(4, 191, 138);
 }
 
+.card{
+    background-color: rgb(4, 191, 138, .25);;
+}
 a {
     color: rgb(4, 191, 138);
 }

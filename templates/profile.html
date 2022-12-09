@@ -6,16 +6,17 @@
 <div class="profile-header">
     <h2 class="profile-name">{{user.name}}'s Profile</h2>
 </div>
-<div> 
+
         {# <h5>Favorited Bike Races</h5>
             <p>Make this part of an aside section?</p>
         #}
-        <div class="container"></div>
+    <div class="container"></div>
         <h5 class="profile-bike">Bike races that you've reviewed.</h5>
-        <div class ="row">
-            {% for review in user.reviews %}
-            <div class="col-md">
-                <div class="card" style="width: 18rem;">
+            <div class ="row">
+                {% for review in user.reviews %}
+            <div class="col-md-4"> 
+               
+                <div class="card">
                     <div class="card-body">
                         <h5 class="card-title"><span style="font-weight:bold"><a href="/races/{{review.race.race_id}}">
                             {{review.race.race_name}}</a></span></h5>
@@ -23,10 +24,11 @@
                         <p class="your-review"><span style="font-weight:bold">Your review</span>: {{ review.review}}</p>
                     </div>
                 </div>  
-            </div>
+                
+            </div> 
             {% endfor %}  
-        </div>
-      
+            </div>
+    </div>
 </div>
 
 
