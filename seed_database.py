@@ -35,7 +35,7 @@ for race in race_data:
     
 
     db_race = crud.create_race(race_name, 
-                                average, 
+                                # average, 
                                 distance, 
                                 elevation, 
                                 location, 
