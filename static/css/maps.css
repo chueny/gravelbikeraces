@@ -8,6 +8,8 @@
 html, body {
     margin:0;
     padding: 0;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
     /* position: relative;
     min-height: 95vh; */
     
@@ -29,6 +31,8 @@ html, body {
 
 #title-gravel, h2{
     color: rgb(4, 191, 138);
+    font-family: 'Oswald', sans-serif;
+    font-weight: bolder;
 
 }
 
@@ -162,6 +166,7 @@ html, body {
     max-width: 300px;
 } */
 
+
 .img-fluid {
     width: 100%;
     height: 300px;
@@ -230,6 +235,8 @@ html, body {
     background-color:rgb(4, 191, 138);
     width: 100%;
     border: 1px solid transparent;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
 }
 
 /*
@@ -290,6 +297,9 @@ html, body {
 
 
 /* ========INDEX PAGE=================== */
+.find-page{
+    margin-top: 20px;
+}
 
 
 .search-description{
@@ -325,7 +335,9 @@ html, body {
     display: flex;
     flex-flow: column wrap;
 }
-
+.card-title, .search {
+    font-family: caveat;
+}
 .card{
     margin: 10px;
 }
