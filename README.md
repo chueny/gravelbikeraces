@@ -56,7 +56,7 @@ Please note that this project is released with a Contributor Code of Conduct. By
 ## Screenshots
 
 <img src="static/img/homepage.png" alt="homepage of google map with pins"/>
-<img src="static/img/find.png" alt="homepage of google map with pins"/>
+<img src="static/img/Find.png" alt="homepage of google map with pins"/>
 <img src="static/img/add-race.png" alt="homepage of google map with pins"/>
 <img src="static/img/profile.png" alt="homepage of google map with pins"/>
 <img src="static/img/rate.png" alt="homepage of google map with pins"/>
